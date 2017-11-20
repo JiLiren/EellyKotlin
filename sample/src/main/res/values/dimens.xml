@@ -1,0 +1,7 @@
+<resources>
+
+    <integer name="integer_1500">1500</integer>
+    <integer name="integer_500">500</integer>
+    <integer name="integer_300">300</integer>
+
+</resources>
