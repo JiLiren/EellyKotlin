@@ -127,15 +127,6 @@ abstract class XFragment: Fragment() {
         mCompositeDisposable.add(RxView.longClicks(view).subscribe(consumer))
     }
 
-    /**
-     * item的点击事件
-     * @param listView listView 和 GridView
-     * @param consumer 回调事件
-     */
-    protected fun setListClick(listView: AbsListView, consumer: Consumer<Int>) {
-        mCompositeDisposable.add(RxAdapterView.itemClicks<ListAdapter>(listView).subscribe(consumer))
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         if (!mCompositeDisposable.isDisposed) {
