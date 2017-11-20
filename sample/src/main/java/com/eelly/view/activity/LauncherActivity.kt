@@ -3,9 +3,9 @@ package com.eelly.view.activity
 import android.transition.ChangeBounds
 import android.transition.Slide
 import android.view.Gravity
-import cn.lib_core.base.XActivity
-import cn.sample.view.fragment.LauncherLeftFragment
 import com.eelly.R
+import com.eelly.core.base.XActivity
+import com.eelly.view.fragment.LauncherLeftFragment
 
 /**
  * @author Vurtne on 19-Nov-17.
@@ -31,7 +31,7 @@ class LauncherActivity: XActivity() {
 
     override fun initData(){
         val slideTransition = Slide(Gravity.LEFT)
-        slideTransition.setDuration(getResources().getInteger(R.integer.integer_1500).toLong())
+        slideTransition.setDuration(getResources().getInteger(R.integer.integer_1000).toLong())
         val leftFragment = LauncherLeftFragment()
         leftFragment.setReenterTransition(slideTransition)
         leftFragment.setExitTransition(slideTransition)

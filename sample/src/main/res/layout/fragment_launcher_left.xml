@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".view.activity.LauncherActivity">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="@dimen/dimen_80"
+        android:layout_height="@dimen/dimen_80"
+        app:srcCompat="@mipmap/ic_kotlin_logo"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/splash_message"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dimen_18"
+        android:layout_marginLeft="@dimen/dimen_35"
+        android:layout_marginRight="@dimen/dimen_35"
+        android:textColor="@color/text_1"
+        android:textSize="@dimen/text_15"/>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_git"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/git_path"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/text_13"
+        android:textColor="@color/text_2"
+        android:layout_marginTop="@dimen/dimen_18"
+        android:drawableLeft="@drawable/ic_git"
+        android:drawablePadding="@dimen/dimen_4"/>
+
+
+</LinearLayout>

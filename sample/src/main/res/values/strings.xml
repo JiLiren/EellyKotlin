@@ -2,5 +2,18 @@
     <string name="app_name">KotlinSample</string>
 
 
+    <string name="splash_message">Statically typed programming language for modern multiplatform applications </string>
+
+    <string name="git_path">https://gitee.com/eelly-android/eellykotlin</string>https://www.douban.com/
+    <string name="douban_path">https://www.douban.com/</string>
+    <string name="splash_thanks_title">The sample project follows the copyright rules using the Douban API,
+        &#x000A;Hereby thanks to Douban.</string>
+
+    <string name="splash_login">Sign&#160;In</string>
+
+
+
+    <string name="transitionName_logo">transitionName_logo</string>
+    <string name="transitionName_git">transitionName_git</string>
 
 </resources>
