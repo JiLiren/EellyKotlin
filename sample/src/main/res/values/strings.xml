@@ -12,6 +12,10 @@
     <string name="splash_login">Sign&#160;In</string>
 
 
+    <string name="menu_home">Home</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_exit">Exit</string>
+
 
     <string name="transitionName_logo">transitionName_logo</string>
     <string name="transitionName_git">transitionName_git</string>
