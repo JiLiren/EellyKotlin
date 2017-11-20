@@ -46,7 +46,7 @@
         android:drawablePadding="@dimen/dimen_4"/>
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_login"
+        android:id="@+id/mLoginBtn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_40"
         android:layout_marginTop="@dimen/dimen_28"

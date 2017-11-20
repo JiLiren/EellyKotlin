@@ -5,6 +5,7 @@ import com.eelly.R
 import com.eelly.core.base.XFragment
 import com.eelly.view.activity.MainActivity
 import io.reactivex.functions.Consumer
+import kotlinx.android.synthetic.main.fragment_launcher_right.*
 
 
 /**
@@ -25,9 +26,9 @@ class LauncherRightFragment : XFragment(){
     }
 
     override fun initEvent() {
-        setClick(getView()!!.findViewById(R.id.btn_login), Consumer {
-            startActivity(Intent(getContext(),MainActivity::class.java))
-            getActivity()!!.finish();
+        setClick(mLoginBtn, Consumer {
+            startActivity(Intent(context,MainActivity::class.java))
+            activity.finish()
         })
     }
 

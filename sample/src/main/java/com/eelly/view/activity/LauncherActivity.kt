@@ -30,12 +30,12 @@ class LauncherActivity: XActivity() {
     }
 
     override fun initData(){
-        val slideTransition = Slide(Gravity.LEFT)
-        slideTransition.setDuration(getResources().getInteger(R.integer.integer_1000).toLong())
+        val slideTransition = Slide(Gravity.START)
+        slideTransition.duration = resources.getInteger(R.integer.integer_1000).toLong()
         val leftFragment = LauncherLeftFragment()
-        leftFragment.setReenterTransition(slideTransition)
-        leftFragment.setExitTransition(slideTransition)
-        leftFragment.setSharedElementEnterTransition(ChangeBounds())
+        leftFragment.reenterTransition = slideTransition
+        leftFragment.exitTransition = slideTransition
+        leftFragment.sharedElementEnterTransition = ChangeBounds()
         supportFragmentManager.beginTransaction()
                 .replace(R.id.layout_content, leftFragment)
                 .commit()

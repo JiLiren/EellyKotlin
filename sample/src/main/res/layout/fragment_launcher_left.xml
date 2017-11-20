@@ -10,7 +10,7 @@
     tools:context=".view.activity.LauncherActivity">
 
     <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/iv_logo"
+        android:id="@+id/mLogoIv"
         android:layout_width="@dimen/dimen_80"
         android:layout_height="@dimen/dimen_80"
         app:srcCompat="@mipmap/ic_kotlin_logo"/>
@@ -27,7 +27,7 @@
         android:textSize="@dimen/text_15"/>
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tv_git"
+        android:id="@+id/mGitTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/git_path"

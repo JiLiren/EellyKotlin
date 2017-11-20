@@ -24,7 +24,7 @@ class StaggerdAdapter(var beans: List<StaggerBean>, var context: Context) : Adap
     }
 
     override fun onBindViewHolder(holder: StaggredHolder?, position: Int) {
-
+//        beans.get(position)
     }
 
 
