@@ -27,6 +27,7 @@ class LauncherRightFragment : XFragment(){
     override fun initEvent() {
         setClick(getView()!!.findViewById(R.id.btn_login), Consumer {
             startActivity(Intent(getContext(),MainActivity::class.java))
+            getActivity()!!.finish();
         })
     }
 

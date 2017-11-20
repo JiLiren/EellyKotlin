@@ -2,7 +2,7 @@
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dimen_230"
+    android:layout_height="200dp"
     android:background="#000"
     android:scaleType="fitCenter"
     android:src="@mipmap/ic_menu_header"

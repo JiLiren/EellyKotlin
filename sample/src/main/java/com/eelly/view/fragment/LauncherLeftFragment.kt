@@ -46,12 +46,14 @@ class LauncherLeftFragment : XFragment(){
         fragment.setAllowReturnTransitionOverlap(true)
         fragment.setSharedElementEnterTransition(changeBoundsTransition)
         Flowable.timer(2, TimeUnit.SECONDS).subscribe {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.layout_content, fragment)
-                    .addToBackStack(null)
-                    .addSharedElement(getView()!!.findViewById(R.id.iv_logo), getString(R.string.transitionName_logo))
-                    .addSharedElement(getView()!!.findViewById(R.id.tv_git), getString(R.string.transitionName_git))
-                    .commit()
+            if(isVisible){
+                fragmentManager.beginTransaction()
+                        .replace(R.id.layout_content, fragment)
+                        .addToBackStack(null)
+                        .addSharedElement(getView()!!.findViewById(R.id.iv_logo), getString(R.string.transitionName_logo))
+                        .addSharedElement(getView()!!.findViewById(R.id.tv_git), getString(R.string.transitionName_git))
+                        .commit()
+            }
         }
     }
 
