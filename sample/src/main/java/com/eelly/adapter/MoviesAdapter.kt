@@ -5,17 +5,17 @@ import android.support.v7.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.eelly.R
-import com.eelly.bean.StaggerBean
-import com.eelly.holder.StaggredHolder
+import com.eelly.bean.MoviesEntity
+import com.eelly.holder.MoviesHolder
 
 /**
  * @author Vurtne on 20-Nov-17.
  */
-class StaggerdAdapter(var beans: List<StaggerBean>, var context: Context) : Adapter<StaggredHolder>() {
+class MoviesAdapter(var beans: List<MoviesEntity>, var context: Context) : Adapter<MoviesHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): StaggredHolder {
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MoviesHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_staggred, parent, false)
-        return StaggredHolder(view)
+        return MoviesHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -23,7 +23,7 @@ class StaggerdAdapter(var beans: List<StaggerBean>, var context: Context) : Adap
 //        return if (beans.isEmpty()) 0 else beans.size
     }
 
-    override fun onBindViewHolder(holder: StaggredHolder?, position: Int) {
+    override fun onBindViewHolder(holder: MoviesHolder?, position: Int) {
 //        beans.get(position)
     }
 

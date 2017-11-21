@@ -6,7 +6,7 @@ import android.view.View
 /**
  * @author Vurtne on 20-Nov-17.
  */
-class StaggredHolder : RecyclerView.ViewHolder {
+class MoviesHolder : RecyclerView.ViewHolder {
 
 
     constructor(view: View):super(view){
