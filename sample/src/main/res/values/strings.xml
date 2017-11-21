@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KotlinSample</string>
+    <string name="app_name">Kotlin</string>
 
 
     <string name="splash_message">Statically typed programming language for modern multiplatform applications </string>
