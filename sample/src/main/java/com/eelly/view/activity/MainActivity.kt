@@ -4,7 +4,7 @@ import android.app.ProgressDialog
 import android.support.v7.widget.StaggeredGridLayoutManager
 import com.eelly.R
 import com.eelly.adapter.MoviesAdapter
-import com.eelly.bean.MoviesEntity
+import com.eelly.bean.MovieEntity
 import com.eelly.constract.IMainConstract
 import com.eelly.core.base.XActivity
 import io.reactivex.functions.Consumer
@@ -28,13 +28,14 @@ class MainActivity: XActivity(), IMainConstract.IView {
         this.mPresenter = presenter
     }
 
-    lateinit var moves : List<MoviesEntity>
+    lateinit var moves : List<MovieEntity>
 
     override fun contentView(): Int {
         return R.layout.activity_main;
     }
 
     override fun initView() {
+//        MainPresenter(this)
         mRecycler.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 //        mRecycler.adapter(MoviesAdapter(null,this))
 
@@ -50,7 +51,7 @@ class MainActivity: XActivity(), IMainConstract.IView {
     }
 
     override fun initData() {
-//        mPresenter.onRefreshMovies()
+        mPresenter.onRefreshMovies()
     }
 
     override fun showLoading() {
