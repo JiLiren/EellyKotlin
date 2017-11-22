@@ -7,6 +7,7 @@ import com.eelly.adapter.MoviesAdapter
 import com.eelly.bean.MovieEntity
 import com.eelly.constract.IMainConstract
 import com.eelly.core.base.XActivity
+import com.eelly.present.MainPresenter
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.layout_main_content.*
 
@@ -35,7 +36,7 @@ class MainActivity: XActivity(), IMainConstract.IView {
     }
 
     override fun initView() {
-//        MainPresenter(this)
+        MainPresenter(this,getCompositeDisposable())
         mRecycler.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
 //        mRecycler.adapter(MoviesAdapter(null,this))
 

@@ -2,8 +2,10 @@ package com.eelly.present
 
 import com.eelly.bean.MovieEntity
 import com.eelly.constract.IMainConstract
-import com.eelly.global.AppHolder
+import com.eelly.core.util.LogUtil
+import com.eelly.net.XSignal
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.functions.Consumer
 
 /**
  * @author Vurtne on 21-Nov-17.
@@ -12,19 +14,24 @@ class MainPresenter(val mView: IMainConstract.IView, val mCompositeDisposable: C
         IMainConstract.IPresenter{
 
     lateinit var mMovies : List<MovieEntity>
-    lateinit var mHolder : AppHolder<List<MovieEntity>>
+    lateinit var mHolder : XSignal<MovieEntity>
     var mCurPage : Int = 0
 
 
     init {
         mView.setPresenter(this)
-        mHolder = AppHolder()
+        mHolder = XSignal()
     }
 
     override fun onRefreshMovies() {
-//        mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesList(), Consumer {
-//
-//        })
+        LogUtil.e("1111","11111")
+        mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesList(), Consumer{
+            entity -> LogUtil.e("1111",entity.toString())
+        } ,
+                Consumer{
+                    throwable ->
+                    LogUtil.e("1111",throwable.message.toString())
+                })
     }
 
     override fun onDestroy() {

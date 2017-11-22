@@ -28,6 +28,7 @@ class LauncherLeftFragment : XFragment(){
     }
 
     override fun initStatusBar() {
+
     }
 
     override fun initEvent() {

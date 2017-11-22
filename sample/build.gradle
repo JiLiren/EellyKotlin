@@ -7,7 +7,7 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        applicationId "com.lgvalle.material_animations"
+        applicationId "com.eelly.kotlin_sample"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1

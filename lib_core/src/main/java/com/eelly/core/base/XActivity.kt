@@ -52,7 +52,7 @@ open abstract class XActivity : AppCompatActivity(){
         }
     }
 
-    final protected fun getCompositeDisposable(): CompositeDisposable? {
+    final protected fun getCompositeDisposable(): CompositeDisposable {
         return mCompositeDisposable
     }
 

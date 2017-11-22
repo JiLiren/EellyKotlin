@@ -9,7 +9,7 @@ import io.reactivex.Observable
 interface XRequest {
 
     @retrofit2.http.GET("in_theaters")
-    fun onRequestMoviesList(): Observable<List<MovieEntity>>
+    fun onRequestMoviesList(): Observable<MovieEntity>
 
 
 
