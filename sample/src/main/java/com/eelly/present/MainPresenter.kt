@@ -28,6 +28,7 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
         mView.showLoading()
         mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesList(), Consumer{
             entity -> LogUtil.e("1111",entity.toString())
+
             mView.hideLoading()
             var d:Int = 100
             print(d)
