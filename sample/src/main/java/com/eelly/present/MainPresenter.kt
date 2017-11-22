@@ -1,7 +1,7 @@
 package com.eelly.present
 
-import com.eelly.bean.MovieEntity
-import com.eelly.constract.IMainConstract
+import com.eelly.bean.TheaterBean
+import com.eelly.contract.IMainContract
 import com.eelly.core.util.LogUtil
 import com.eelly.net.XNetty
 import io.reactivex.disposables.CompositeDisposable
@@ -10,27 +10,31 @@ import io.reactivex.functions.Consumer
 /**
  * @author Vurtne on 21-Nov-17.
  */
-class MainPresenter(val mView: IMainConstract.IView, val mCompositeDisposable: CompositeDisposable):
-        IMainConstract.IPresenter{
+class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: CompositeDisposable):
+        IMainContract.IPresenter{
 
-    lateinit var mMovies : List<MovieEntity>
-    lateinit var mHolder : XNetty<MovieEntity>
+    lateinit var mMovies : List<TheaterBean>
+    lateinit var mHolder : XNetty<TheaterBean>
     var mCurPage : Int = 0
 
 
     init {
         mView.setPresenter(this)
+
         mHolder = XNetty()
     }
 
     override fun onRefreshMovies() {
-        LogUtil.e("1111","11111")
-
+        mView.showLoading()
         mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesList(), Consumer{
             entity -> LogUtil.e("1111",entity.toString())
+            mView.hideLoading()
+            var d:Int = 100
+            print(d)
         } ,
                 Consumer{
                     throwable ->
+                    mView.hideLoading()
                     LogUtil.e("1111",throwable.message.toString())
                 })
     }

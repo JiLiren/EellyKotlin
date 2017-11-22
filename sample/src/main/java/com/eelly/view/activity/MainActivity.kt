@@ -4,8 +4,7 @@ import android.app.ProgressDialog
 import android.support.v7.widget.StaggeredGridLayoutManager
 import com.eelly.R
 import com.eelly.adapter.MoviesAdapter
-import com.eelly.bean.MovieEntity
-import com.eelly.constract.IMainConstract
+import com.eelly.contract.IMainContract
 import com.eelly.core.base.XActivity
 import com.eelly.present.MainPresenter
 import io.reactivex.functions.Consumer
@@ -14,9 +13,9 @@ import kotlinx.android.synthetic.main.layout_main_content.*
 /**
  * @author Vurtne on 20-Nov-17.
  */
-class MainActivity: XActivity(), IMainConstract.IView {
+class MainActivity: XActivity(), IMainContract.IView {
 
-    lateinit var mPresenter: IMainConstract.IPresenter
+    lateinit var mPresenter: IMainContract.IPresenter
     lateinit var mAdapter:MoviesAdapter
     var mDialog: ProgressDialog? = null
 
@@ -25,11 +24,9 @@ class MainActivity: XActivity(), IMainConstract.IView {
         val TAG : String = "MainActivity"
     }
 
-    override fun setPresenter(presenter: IMainConstract.IPresenter) {
+    override fun setPresenter(presenter: IMainContract.IPresenter) {
         this.mPresenter = presenter
     }
-
-    lateinit var moves : List<MovieEntity>
 
     override fun contentView(): Int {
         return R.layout.activity_main;
@@ -47,7 +44,7 @@ class MainActivity: XActivity(), IMainConstract.IView {
 
     override fun initEvent() {
         setClick(mRefreshBtn, Consumer {
-            showLoading()
+            mPresenter.onRefreshMovies()
         })
     }
 

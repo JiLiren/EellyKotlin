@@ -1,4 +1,4 @@
-package com.eelly.constract
+package com.eelly.contract
 
 import com.eelly.core.base.XPresenter
 import com.eelly.core.base.XView
@@ -6,7 +6,7 @@ import com.eelly.core.base.XView
 /**
  * @author Vurtne on 21-Nov-17.
  */
-interface IMainConstract {
+interface IMainContract {
 
     interface IPresenter: XPresenter{
         fun onRefreshMovies()

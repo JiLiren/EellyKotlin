@@ -21,8 +21,8 @@ open class XNetty<T> {
      */
     fun onRequest(compositeDisposable: CompositeDisposable, observable: Observable<T>,
                   successConsumer: Consumer<T>,errorConsumer : Consumer<Throwable>) {
-        compositeDisposable.add(observable.observeOn(Schedulers.io()).
-                subscribeOn(AndroidSchedulers.mainThread()).subscribe(successConsumer,errorConsumer))
+        compositeDisposable.add(observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(successConsumer,errorConsumer))
     }
 
 }
