@@ -1,6 +1,5 @@
 package com.eelly.net
 
-import com.eelly.core.util.LogUtil
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -22,7 +21,6 @@ open class XSignal<T> {
      */
     fun onRequest(compositeDisposable: CompositeDisposable, observable: Observable<T>,
                   successConsumer: Consumer<T>,errorConsumer : Consumer<Throwable>) {
-        LogUtil.e("1111","222222")
         compositeDisposable.add(observable.observeOn(Schedulers.io()).
                 subscribeOn(AndroidSchedulers.mainThread()).subscribe(successConsumer,errorConsumer))
     }
