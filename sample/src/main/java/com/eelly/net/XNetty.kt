@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * @author Vurtne on 21-Nov-17.
  */
-open class XSignal<T> {
+open class XNetty<T> {
 
      /**
      * 获取请求对象
