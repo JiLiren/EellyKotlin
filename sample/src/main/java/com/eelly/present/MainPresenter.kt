@@ -25,6 +25,7 @@ class MainPresenter(val mView: IMainConstract.IView, val mCompositeDisposable: C
 
     override fun onRefreshMovies() {
         LogUtil.e("1111","11111")
+
         mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesList(), Consumer{
             entity -> LogUtil.e("1111",entity.toString())
         } ,
