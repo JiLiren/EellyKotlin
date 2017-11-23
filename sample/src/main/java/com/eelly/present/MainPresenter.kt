@@ -27,11 +27,9 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
     override fun onRefreshMovies() {
         mView.showLoading()
         mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesList(), Consumer{
-            entity -> LogUtil.e("1111",entity.toString())
-
+            entity ->
+            mView.setAdapter(entity)
             mView.hideLoading()
-            var d:Int = 100
-            print(d)
         } ,
                 Consumer{
                     throwable ->

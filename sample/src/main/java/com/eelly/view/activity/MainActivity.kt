@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.support.v7.widget.StaggeredGridLayoutManager
 import com.eelly.R
 import com.eelly.adapter.MoviesAdapter
+import com.eelly.bean.TheaterBean
 import com.eelly.contract.IMainContract
 import com.eelly.core.base.XActivity
 import com.eelly.present.MainPresenter
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.layout_main_content.*
  * @author Vurtne on 20-Nov-17.
  */
 class MainActivity: XActivity(), IMainContract.IView {
+
 
     lateinit var mPresenter: IMainContract.IPresenter
     lateinit var mAdapter:MoviesAdapter
@@ -35,7 +37,8 @@ class MainActivity: XActivity(), IMainContract.IView {
     override fun initView() {
         MainPresenter(this,getCompositeDisposable())
         mRecycler.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
-//        mRecycler.adapter(MoviesAdapter(null,this))
+        mRecycler.isNestedScrollingEnabled = false
+//  mRecycler.adapter(MoviesAdapter(null,this))
 
     }
 
@@ -50,6 +53,11 @@ class MainActivity: XActivity(), IMainContract.IView {
 
     override fun initData() {
         mPresenter.onRefreshMovies()
+    }
+
+    override fun setAdapter(bean: TheaterBean) {
+        mAdapter = MoviesAdapter(bean.subjects,this)
+        mRecycler.adapter = mAdapter
     }
 
     override fun showLoading() {

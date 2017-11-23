@@ -1,5 +1,6 @@
 package com.eelly.contract
 
+import com.eelly.bean.TheaterBean
 import com.eelly.core.base.XPresenter
 import com.eelly.core.base.XView
 
@@ -15,6 +16,7 @@ interface IMainContract {
     interface IView : XView<IPresenter> {
         fun showLoading()
         fun hideLoading()
+        fun setAdapter(bean: TheaterBean)
     }
 
 }
