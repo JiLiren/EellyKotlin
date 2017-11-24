@@ -26,15 +26,30 @@ class MoviesAdapter(var mMovies:List<MovieBean>,var context: Context) : Adapter<
     override fun onBindViewHolder(holder: MoviesHolder, position: Int) {
         val bean : MovieBean = mMovies[position]
         holder.mNameTv.text = bean.title
-        holder.mRateRb.rating = bean.rating.stars
+        holder.mRateRb.setStar(bean.rating.stars)
 
-//        GlideApp.with(context).load("http://goo.gl/gEgYUd").into(imageView);
+        var strName = ""
+        bean.casts.forEach { actor ->
+            strName += actor.name + " / "
+        }
+        if (strName.endsWith(" / ")){
+            strName = strName.substring(0,strName.length-2)
+        }
+        holder.mActorTv.text = context.getString(R.string.text_actor,strName)
+
+        var strdiractor = ""
+        bean.directors.forEach { actor ->
+            strdiractor += actor.name + " / "
+        }
+        if (strdiractor.endsWith(" / ")){
+            strdiractor = strdiractor.substring(0,strdiractor.length-2)
+        }
+        holder.mDirectorTv.text = context.getString(R.string.text_director,strdiractor)
+
         Glide.with(context).load(bean.images.large).
-//                .placeholder(R.mipmap.default_image).
                 into(holder.mBannerIv)
 
 
-//        beans.get(position)
     }
 
 

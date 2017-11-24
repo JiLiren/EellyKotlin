@@ -23,8 +23,8 @@ package com.eelly.bean
  *
  */
 class MovieBean(var rating: RateBean, var genres:List<String>, var title:String,
-                var casts:List<ImageBean>, var durations: List<String>, var collect_count: String,
+                var casts:List<ActorBean>, var durations: List<String>, var collect_count: String,
                 var mainland_pubdate:String, var has_video:Boolean, var original_title:String,
-                var subtype:String, var directors:List<ImageBean>, var pubdates:List<String>,
-                var year:String,var images:ImageBean,var alt:String,var id:String){
+                var subtype:String, var directors:List<ActorBean>, var pubdates:List<String>,
+                var year:String, var images:ImageBean, var alt:String, var id:String){
 }
