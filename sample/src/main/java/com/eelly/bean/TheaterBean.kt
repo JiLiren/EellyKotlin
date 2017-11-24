@@ -11,7 +11,7 @@ package com.eelly.bean
  * title: 名称
  * subjects ：电影
  */
-data class TheaterBean(var count: Double, var start :Double, var total:Double,
-        var subjects:List<MovieBean>,var title:String)
+data class TheaterBean(var count: Int, var start :Double, var total:Double,
+        var subjects:ArrayList<MovieBean>,var title:String)
 
 

@@ -12,7 +12,7 @@ import com.eelly.holder.MoviesHolder
 /**
  * @author Vurtne on 20-Nov-17.
  */
-class MoviesAdapter(var mMovies:List<MovieBean>,var context: Context) : Adapter<MoviesHolder>() {
+class MoviesAdapter(var mMovies:ArrayList<MovieBean>,var context: Context) : Adapter<MoviesHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MoviesHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_movies, parent, false)
@@ -26,7 +26,7 @@ class MoviesAdapter(var mMovies:List<MovieBean>,var context: Context) : Adapter<
     override fun onBindViewHolder(holder: MoviesHolder, position: Int) {
         val bean : MovieBean = mMovies[position]
         holder.mNameTv.text = bean.title
-        holder.mRateRb.setStar(bean.rating.stars)
+        holder.mRateRb.setStar(bean.rating.stars / 10)
 
         var strName = ""
         bean.casts.forEach { actor ->
@@ -48,10 +48,12 @@ class MoviesAdapter(var mMovies:List<MovieBean>,var context: Context) : Adapter<
 
         Glide.with(context).load(bean.images.large).
                 into(holder.mBannerIv)
-
-
     }
 
+    fun addBean(movies:MutableList<MovieBean>){
+//        mMovies.addAll(movies)
+        notifyDataSetChanged()
+    }
 
 
 }

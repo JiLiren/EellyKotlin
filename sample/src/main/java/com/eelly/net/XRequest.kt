@@ -14,8 +14,8 @@ interface XRequest {
     @GET("in_theaters")
     fun onRequestMoviesList(): Observable<TheaterBean>
 
-    @GET("client/getRecordListBySubmitUserId")
-    abstract fun getRecordListBySubmitUserId(
-            @Query("page") page: String): Observable<TheaterBean> //信息的记录列表
+    @GET("in_theaters")
+    fun onRequestMoviesMore(@Query("start") page: Int,@Query("count") count:String): Observable<TheaterBean>
+
 
 }

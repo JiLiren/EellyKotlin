@@ -11,12 +11,14 @@ interface IMainContract {
 
     interface IPresenter: XPresenter{
         fun onRefreshMovies()
+        fun onLoadMoew()
     }
 
     interface IView : XView<IPresenter> {
         fun showLoading()
         fun hideLoading()
         fun setAdapter(bean: TheaterBean)
+        fun addAdapter(bean: TheaterBean)
     }
 
 }
