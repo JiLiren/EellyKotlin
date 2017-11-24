@@ -38,5 +38,4 @@
         android:drawableLeft="@drawable/ic_git"
         android:drawablePadding="@dimen/dimen_4"/>
 
-
 </LinearLayout>
