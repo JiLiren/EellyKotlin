@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:background="#000"
-    android:scaleType="fitCenter"
+    android:scaleType="centerCrop"
     android:src="@mipmap/ic_menu_header"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 

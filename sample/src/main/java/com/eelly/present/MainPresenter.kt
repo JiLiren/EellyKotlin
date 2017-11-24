@@ -34,7 +34,6 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
                 Consumer{
                     throwable ->
                     mView.hideLoading()
-                    LogUtil.e("1111",throwable.message.toString())
                 })
     }
 

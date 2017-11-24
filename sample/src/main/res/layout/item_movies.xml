@@ -20,16 +20,16 @@
         app:cardBackgroundColor="@color/color_white">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/mPosterIv"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:background="@mipmap/ic_menu_header"/>
+                android:layout_height="@dimen/dimen_240"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_load_default"/>
 
             <TextView
                 android:id="@+id/mNameTv"
@@ -37,27 +37,48 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dimen_8"
                 android:layout_marginTop="@dimen/dimen_8"
-                android:text="王的故事"
                 android:textSize="@dimen/text_15"
-                android:textColor="@color/text_default"/>
+                android:singleLine="true"
+                android:textColor="@color/text_1"/>
 
-            <RatingBar
+
+            <com.eelly.widget.XRatingBar
                 android:id="@+id/mRateRb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:rating="2.5"
-                android:stepSize="0.5"
+                android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="@dimen/dimen_6"
                 android:layout_marginLeft="@dimen/dimen_8"
-                android:isIndicator="false"
-                android:numStars="5"/>
+                app:starCount="5"
+                app:halfstart="true"
+                app:starEmpty="@drawable/ic_stars_null"
+                app:starFill="@drawable/ic_stars_full"
+                app:starHalf="@drawable/ic_stars_progress"
+                app:starImageHeight="@dimen/dimen_16"
+                app:starImageWidth="@dimen/dimen_16"
+                app:starImagePadding="@dimen/dimen_4"/>
 
             <TextView
-                android:id="@+id/tv_about"
+                android:id="@+id/mActorTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_12"
+                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_marginLeft="@dimen/dimen_8"
+                android:textColor="@color/text_default"
+                android:singleLine="true"/>
+
+            <TextView
+                android:id="@+id/mDirectorTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_4"
                 android:layout_marginBottom="@dimen/dimen_12"
-                android:text="演员：xxx/xxx/xxx/xxx/xxx/xxx/"/>
+                android:textSize="@dimen/text_12"
+                android:layout_marginLeft="@dimen/dimen_8"
+                android:textColor="@color/text_default"
+                android:singleLine="true"/>
+
 
         </LinearLayout>
 

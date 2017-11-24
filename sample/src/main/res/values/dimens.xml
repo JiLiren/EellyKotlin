@@ -1,5 +1,6 @@
 <resources>
 
+    <dimen name="text_12">12sp</dimen>
     <dimen name="text_13">13sp</dimen>
     <dimen name="text_14">14sp</dimen>
     <dimen name="text_15">15sp</dimen>
@@ -50,6 +51,7 @@
     <dimen name="dimen_170">170dp</dimen>
     <dimen name="dimen_200">200dp</dimen>
     <dimen name="dimen_230">230dp</dimen>
+    <dimen name="dimen_240">240dp</dimen>
     <dimen name="dimen_250">250dp</dimen>
 
     <integer name="integer_1500">1500</integer>
