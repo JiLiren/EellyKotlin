@@ -1,9 +1,9 @@
 package com.eelly.net
 
 import com.eelly.bean.TheaterBean
+import com.google.gson.JsonElement
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 
 /**
@@ -18,4 +18,6 @@ interface XRequest {
     fun onRequestMoviesMore(@Query("start") page: Int,@Query("count") count:String): Observable<TheaterBean>
 
 
+    @POST
+    fun post(@Url path: String, @Body dataJson: String): Observable<JsonElement>
 }

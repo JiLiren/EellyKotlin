@@ -22,6 +22,11 @@ android {
     }
 }
 
+androidExtensions {
+    defaultCacheImplementation = "HASH_MAP" // also SPARSE_ARRAY, NONE
+    experimental = true
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:25.3.1'

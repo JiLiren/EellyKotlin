@@ -5,7 +5,9 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.FrameLayout
 import butterknife.ButterKnife
+import com.eelly.core.R
 import com.eelly.core.util.DeviceUtil
 import com.eelly.core.util.StatusBarUtil
 import com.jakewharton.rxbinding2.view.RxView
@@ -26,9 +28,18 @@ open abstract class XActivity : AppCompatActivity(){
 
     private val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
+    lateinit var mView : FrameLayout
+    lateinit var mContentView : View
+    lateinit var mLoadView : View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(contentView())
+        mContentView = View.inflate(this,contentView(), null)
+        mLoadView = onCreateLoadView()
+        mView = FrameLayout(this)
+        mView.addView(mLoadView)
+        mView.addView(mContentView)
+        setContentView(mView)
         context = this
         ButterKnife.bind(this)
         initView()
@@ -47,14 +58,31 @@ open abstract class XActivity : AppCompatActivity(){
 
     override fun onDestroy() {
         super.onDestroy()
-        if (!mCompositeDisposable.isDisposed()) {
+        if (!mCompositeDisposable.isDisposed) {
             mCompositeDisposable.dispose()
         }
     }
 
-    final protected fun getCompositeDisposable(): CompositeDisposable {
+    protected fun onShowLoading(){
+        mContentView.visibility = View.GONE
+        mLoadView.visibility = View.VISIBLE
+    }
+
+    protected fun onShowContent(){
+        mContentView.visibility = View.VISIBLE
+        mLoadView.visibility = View.GONE
+    }
+
+    protected fun getCompositeDisposable(): CompositeDisposable {
         return mCompositeDisposable
     }
+
+    protected fun onCreateLoadView():View{
+        val view = View.inflate(this, R.layout.layout_loading,null)
+
+        return view
+    }
+
 
     /**
      * 点击事件

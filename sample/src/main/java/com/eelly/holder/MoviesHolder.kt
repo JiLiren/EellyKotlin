@@ -3,6 +3,7 @@ package com.eelly.holder
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.eelly.R
 import com.eelly.widget.XRatingBar
@@ -18,5 +19,6 @@ class MoviesHolder(rootView :View) : RecyclerView.ViewHolder(rootView){
     var mRateRb : XRatingBar = rootView.findViewById(R.id.mRateRb) as XRatingBar
     var mActorTv : TextView = rootView.findViewById(R.id.mActorTv) as TextView
     var mDirectorTv : TextView = rootView.findViewById(R.id.mDirectorTv) as TextView
+    var mClickLayout : LinearLayout = rootView.findViewById(R.id.mClickLayout) as LinearLayout
 
 }

@@ -53,6 +53,7 @@
     <dimen name="dimen_230">230dp</dimen>
     <dimen name="dimen_240">240dp</dimen>
     <dimen name="dimen_250">250dp</dimen>
+    <dimen name="dimen_480">480dp</dimen>
 
     <integer name="integer_1500">1500</integer>
     <integer name="integer_1000">1000</integer>

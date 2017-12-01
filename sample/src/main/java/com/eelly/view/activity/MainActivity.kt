@@ -80,6 +80,8 @@ class MainActivity: XActivity(), IMainContract.IView {
 
     override fun setAdapter(bean: TheaterBean) {
         mAdapter = MoviesAdapter(bean.subjects,this)
+        isLoading = false
+        mMoreLayout.visibility = View.VISIBLE
         mRecycler.adapter = mAdapter
     }
 
@@ -93,18 +95,20 @@ class MainActivity: XActivity(), IMainContract.IView {
     }
 
     override fun showLoading() {
-        if (mDialog == null){
-            mDialog = ProgressDialog(this)
-        }
-        if (!mDialog!!.isShowing){
-            mDialog!!.show()
-        }
+        onShowLoading()
+//        if (mDialog == null){
+//            mDialog = ProgressDialog(this)
+//        }
+//        if (!mDialog!!.isShowing){
+//            mDialog!!.show()
+//        }
     }
 
     override fun hideLoading() {
-        if (mDialog!!.isShowing){
-            mDialog!!.dismiss()
-        }
+        onShowContent()
+//        if (mDialog!!.isShowing){
+//            mDialog!!.dismiss()
+//        }
     }
 
 

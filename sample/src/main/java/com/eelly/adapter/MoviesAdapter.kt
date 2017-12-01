@@ -1,13 +1,21 @@
 package com.eelly.adapter
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.util.Pair
 import android.support.v7.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.eelly.R
 import com.eelly.bean.MovieBean
+import com.eelly.core.util.TransitionHelper
 import com.eelly.holder.MoviesHolder
+import com.eelly.view.activity.DetailsActivity
 
 /**
  * @author Vurtne on 20-Nov-17.
@@ -48,6 +56,17 @@ class MoviesAdapter(var mMovies:ArrayList<MovieBean>,var context: Context) : Ada
 
         Glide.with(context).load(bean.images.large).
                 into(holder.mBannerIv)
+
+        holder.mClickLayout.setOnClickListener({
+            view ->
+            val intent  = Intent(context,DetailsActivity::class.java)
+            val pairs = TransitionHelper.createSafeTransitionParticipants(
+                    context as Activity, false,
+                    Pair<View, Any>(view, context.getString(R.string.transitionName_details)))
+            val compat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    context as Activity, *pairs)
+            ActivityCompat.startActivity(context, intent, compat.toBundle())
+        })
     }
 
     fun addBean(movies:MutableList<MovieBean>){
@@ -57,3 +76,4 @@ class MoviesAdapter(var mMovies:ArrayList<MovieBean>,var context: Context) : Ada
 
 
 }
+
