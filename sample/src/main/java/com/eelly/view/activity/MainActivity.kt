@@ -64,10 +64,10 @@ class MainActivity: XActivity(), IMainContract.IView {
 
         mScrollView.setOnScrollChangeListener { view : NestedScrollView, scrollX: Int,
                                                 scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
-            if (scrollY >= (view.getChildAt(0).getMeasuredHeight() - mMoreHeight -
-                    view.getMeasuredHeight()) && !isLoading) {
+            if (scrollY >= (view.getChildAt(0).measuredHeight - mMoreHeight -
+                    view.measuredHeight) && !isLoading) {
                 isLoading = true
-                mPresenter.onLoadMoew()
+                mPresenter.onLoadMore()
             }
         }
 
@@ -83,6 +83,7 @@ class MainActivity: XActivity(), IMainContract.IView {
         isLoading = false
         mMoreLayout.visibility = View.VISIBLE
         mRecycler.adapter = mAdapter
+        mBannerView.setEntities(mPresenter.onGetBanner())
     }
 
     override fun addAdapter(bean: TheaterBean) {
@@ -101,6 +102,7 @@ class MainActivity: XActivity(), IMainContract.IView {
     override fun hideLoading() {
         onShowContent()
     }
+
 
 
 }

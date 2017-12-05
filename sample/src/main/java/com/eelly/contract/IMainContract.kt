@@ -3,6 +3,7 @@ package com.eelly.contract
 import com.eelly.bean.TheaterBean
 import com.eelly.core.base.XPresenter
 import com.eelly.core.base.XView
+import com.eelly.core.widget.banner.BannerEntity
 
 /**
  * @author Vurtne on 21-Nov-17.
@@ -11,7 +12,8 @@ interface IMainContract {
 
     interface IPresenter: XPresenter{
         fun onRefreshMovies()
-        fun onLoadMoew()
+        fun onLoadMore()
+        fun onGetBanner():List<BannerEntity>
     }
 
     interface IView : XView<IPresenter> {

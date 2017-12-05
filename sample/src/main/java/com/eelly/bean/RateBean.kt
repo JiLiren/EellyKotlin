@@ -9,4 +9,4 @@ package com.eelly.bean
  * stars 星数
  * min  最低分
  */
-data class RateBean(var max :String,var average :String ,var stars:Float,var min:String)
+data class RateBean(var max :String,var average :Float ,var stars:Float,var min:String)

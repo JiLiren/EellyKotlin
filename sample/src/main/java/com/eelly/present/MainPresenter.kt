@@ -2,6 +2,7 @@ package com.eelly.present
 
 import com.eelly.bean.TheaterBean
 import com.eelly.contract.IMainContract
+import com.eelly.core.widget.banner.BannerEntity
 import com.eelly.net.XNetty
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Consumer
@@ -11,6 +12,7 @@ import io.reactivex.functions.Consumer
  */
 class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: CompositeDisposable):
         IMainContract.IPresenter{
+
 
     lateinit var mTheaterBean : TheaterBean
     var mHolder : XNetty<TheaterBean>
@@ -37,7 +39,7 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
                 })
     }
 
-    override fun onLoadMoew() {
+    override fun onLoadMore() {
         mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesMore(
                 mTheaterBean.count + 1,COUNT_PAGE),
                 Consumer{
@@ -50,8 +52,45 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
                 })
     }
 
+    override fun onGetBanner(): List<BannerEntity> {
+        var entity : BannerEntity
+        val list : ArrayList<BannerEntity> = ArrayList()
+        mTheaterBean.subjects.forEach{
+            bean ->
+            entity = BannerEntity(bean.images.large,bean.title,bean.rating.average)
+            list.add(entity)
+        }
+        onQuickSort(list,0,list.size-1)
+        return list.subList(0,Math.max(list.size,5))
+    }
+
     override fun onDestroy() {
 
+    }
+
+    /**
+     * 根据评分排序，取前五
+     * */
+    private fun onQuickSort(list: ArrayList<BannerEntity>, left: Int, right: Int) {
+        if (left >= right) {
+            return
+        }
+        var i = left
+        var j = right
+        val key = list[left]
+        while (i < j) {
+            while (i < j && list[j].average <= key.average) {
+                j--
+            }
+            list[i] = list[j]
+            while (i < j && list[i].average > key.average) {
+                i++
+            }
+            list[j] = list[i]
+        }
+        list[i] = key
+        onQuickSort(list, left, i - 1)
+        onQuickSort(list, i + 1, right)
     }
 
 }

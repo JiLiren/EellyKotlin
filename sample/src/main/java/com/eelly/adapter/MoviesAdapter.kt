@@ -45,14 +45,14 @@ class MoviesAdapter(var mMovies:ArrayList<MovieBean>,var context: Context) : Ada
         }
         holder.mActorTv.text = context.getString(R.string.text_actor,strName)
 
-        var strdiractor = ""
+        var strDirector = ""
         bean.directors.forEach { actor ->
-            strdiractor += actor.name + " / "
+            strDirector += actor.name + " / "
         }
-        if (strdiractor.endsWith(" / ")){
-            strdiractor = strdiractor.substring(0,strdiractor.length-2)
+        if (strDirector.endsWith(" / ")){
+            strDirector = strDirector.substring(0,strDirector.length-2)
         }
-        holder.mDirectorTv.text = context.getString(R.string.text_director,strdiractor)
+        holder.mDirectorTv.text = context.getString(R.string.text_director,strDirector)
 
         Glide.with(context).load(bean.images.large).
                 into(holder.mBannerIv)
