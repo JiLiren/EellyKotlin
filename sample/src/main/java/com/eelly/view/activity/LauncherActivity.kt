@@ -29,6 +29,7 @@ class LauncherActivity: XActivity() {
 
     }
 
+    //TODO fix bug
     override fun initData(){
         val slideTransition = Slide(Gravity.START)
         slideTransition.duration = resources.getInteger(R.integer.integer_1000).toLong()

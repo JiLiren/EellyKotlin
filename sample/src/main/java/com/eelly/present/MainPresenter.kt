@@ -69,7 +69,7 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
     }
 
     /**
-     * 根据评分排序，取前五
+     * 根据评分排序
      * */
     private fun onQuickSort(list: ArrayList<BannerEntity>, left: Int, right: Int) {
         if (left >= right) {
