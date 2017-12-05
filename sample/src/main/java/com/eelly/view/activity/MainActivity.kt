@@ -96,19 +96,10 @@ class MainActivity: XActivity(), IMainContract.IView {
 
     override fun showLoading() {
         onShowLoading()
-//        if (mDialog == null){
-//            mDialog = ProgressDialog(this)
-//        }
-//        if (!mDialog!!.isShowing){
-//            mDialog!!.show()
-//        }
     }
 
     override fun hideLoading() {
         onShowContent()
-//        if (mDialog!!.isShowing){
-//            mDialog!!.dismiss()
-//        }
     }
 
 

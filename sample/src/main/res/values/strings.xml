@@ -18,7 +18,7 @@
 
     <string name="text_actor">演员：%s</string>
     <string name="text_director">导演：%s</string>
-    <string name="text_load_more">加载更多...</string>
+    <string name="text_load_more">加载更多&#8230;&#8230;&#8230;</string>
 
 
     <string name="transitionName_logo">transitionName_logo</string>

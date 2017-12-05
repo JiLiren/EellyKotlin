@@ -10,9 +10,11 @@ import butterknife.ButterKnife
 import com.eelly.core.R
 import com.eelly.core.util.DeviceUtil
 import com.eelly.core.util.StatusBarUtil
+import com.eelly.core.widget.LoadingLayout
 import com.jakewharton.rxbinding2.view.RxView
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Consumer
+import kotlinx.android.synthetic.main.layout_loading.*
 import java.util.concurrent.TimeUnit
 
 /**
@@ -37,8 +39,9 @@ open abstract class XActivity : AppCompatActivity(){
         mContentView = View.inflate(this,contentView(), null)
         mLoadView = onCreateLoadView()
         mView = FrameLayout(this)
-        mView.addView(mLoadView)
         mView.addView(mContentView)
+        mView.addView(mLoadView)
+        mLoadView.visibility = View.GONE
         setContentView(mView)
         context = this
         ButterKnife.bind(this)
@@ -64,13 +67,22 @@ open abstract class XActivity : AppCompatActivity(){
     }
 
     protected fun onShowLoading(){
-        mContentView.visibility = View.GONE
         mLoadView.visibility = View.VISIBLE
+        mLoadLayout.onStartAnimation()
     }
 
     protected fun onShowContent(){
-        mContentView.visibility = View.VISIBLE
-        mLoadView.visibility = View.GONE
+        mLoadLayout.onStopAnimation(
+                object : LoadingLayout.OnFinishListener {
+                    override fun onFinish(status: Int) {
+                        if (status == 0) {
+                            mContentView.visibility = View.VISIBLE
+                        }
+                        if (status == 1) {
+                            mLoadView.visibility = View.GONE
+                        }
+                    }
+        })
     }
 
     protected fun getCompositeDisposable(): CompositeDisposable {
@@ -78,8 +90,7 @@ open abstract class XActivity : AppCompatActivity(){
     }
 
     protected fun onCreateLoadView():View{
-        val view = View.inflate(this, R.layout.layout_loading,null)
-
+        val view = View.inflate(this,R.layout.layout_loading,null)
         return view
     }
 

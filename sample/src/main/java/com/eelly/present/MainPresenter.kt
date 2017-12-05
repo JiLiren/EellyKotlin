@@ -13,15 +13,13 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
         IMainContract.IPresenter{
 
     lateinit var mTheaterBean : TheaterBean
-    lateinit var mHolder : XNetty<TheaterBean>
-    var mCurPage : Int = 1
+    var mHolder : XNetty<TheaterBean>
     val COUNT_PAGE  = "20"
 
 
 
     init {
         mView.setPresenter(this)
-
         mHolder = XNetty()
     }
 
@@ -40,8 +38,6 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
     }
 
     override fun onLoadMoew() {
-//        mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesMore(
-//                (mTheaterBean.count- 1).toString(),COUNT_PAGE),
         mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesMore(
                 mTheaterBean.count + 1,COUNT_PAGE),
                 Consumer{
