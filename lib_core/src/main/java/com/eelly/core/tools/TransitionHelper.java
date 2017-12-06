@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.eelly.core.util;
+package com.eelly.core.tools;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;

@@ -13,7 +13,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.eelly.R
 import com.eelly.bean.MovieBean
-import com.eelly.core.util.TransitionHelper
+import com.eelly.core.tools.TransitionHelper
 import com.eelly.holder.MoviesHolder
 import com.eelly.view.activity.DetailsActivity
 
@@ -65,6 +65,9 @@ class MoviesAdapter(var mMovies:ArrayList<MovieBean>,var context: Context) : Ada
                     Pair<View, Any>(view, context.getString(R.string.transitionName_details)))
             val compat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     context as Activity, *pairs)
+//            val bundle = Bundle()
+//            bundle.putParcelable("data",bean)
+//            intent.putExtras(bundle)
             ActivityCompat.startActivity(context, intent, compat.toBundle())
         })
     }

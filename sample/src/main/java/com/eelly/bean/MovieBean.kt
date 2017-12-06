@@ -1,5 +1,12 @@
 package com.eelly.bean
 
+import android.os.Parcel
+import android.os.Parcelable
+import android.R.attr.level
+
+
+
+
 /**
  * @author Vurtne on 22-Nov-17.
  * 主题
@@ -26,5 +33,7 @@ class MovieBean(var rating: RateBean, var genres:List<String>, var title:String,
                 var casts:List<ActorBean>, var durations: List<String>, var collect_count: String,
                 var mainland_pubdate:String, var has_video:Boolean, var original_title:String,
                 var subtype:String, var directors:List<ActorBean>, var pubdates:List<String>,
-                var year:String, var images:ImageBean, var alt:String, var id:String){
+                var year:String, var images:ImageBean, var alt:String, var id:String)  {
+
+
 }

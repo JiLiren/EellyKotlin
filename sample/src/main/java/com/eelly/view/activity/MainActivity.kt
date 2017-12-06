@@ -34,9 +34,7 @@ class MainActivity: XActivity(), IMainContract.IView {
         this.mPresenter = presenter
     }
 
-    override fun contentView(): Int {
-        return R.layout.activity_main
-    }
+    override fun contentView(): Int = R.layout.activity_main
 
     override fun initView() {
         MainPresenter(this,getCompositeDisposable())

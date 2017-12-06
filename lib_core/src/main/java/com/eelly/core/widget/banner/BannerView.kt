@@ -45,7 +45,7 @@ class BannerView : FrameLayout {
         val typeArray = context.obtainStyledAttributes(attrs,
                 R.styleable.banner)
         val lineColor = typeArray.getColor(R.styleable.banner_lineColor,
-                ContextCompat.getColor(getContext(), R.color.material_orange_700))
+                ContextCompat.getColor(getContext(), R.color.color_orange_700))
         typeArray.recycle()
         mLine.setLineColor(lineColor)
         mMainHandler = Handler(context.mainLooper)

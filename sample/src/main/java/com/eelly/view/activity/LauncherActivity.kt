@@ -13,9 +13,7 @@ import com.eelly.view.fragment.LauncherLeftFragment
  */
 class LauncherActivity: XActivity() {
 
-    override fun contentView():Int{
-        return R.layout.activity_launcher
-    }
+    override fun contentView():Int = R.layout.activity_launcher
 
     override fun initView(){
 

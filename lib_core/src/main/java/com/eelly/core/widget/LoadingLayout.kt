@@ -60,7 +60,7 @@ class LoadingLayout(context : Context,attrs :AttributeSet) : RelativeLayout(cont
 
         mMsgView.text = context.getString(R.string.text_loading)
         mMsgView.gravity = Gravity.CENTER
-        mMsgView.setTextColor(ContextCompat.getColor(context,R.color.material_orange_700))
+        mMsgView.setTextColor(ContextCompat.getColor(context,R.color.color_orange_700))
         addView(mMsgView, RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT))
 

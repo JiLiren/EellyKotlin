@@ -21,7 +21,7 @@ class BannerLine(context: Context,attrs: AttributeSet) : View(context,attrs) {
     private var mPosition = 0
     private val mWidth:Float
     private var mPageWidth = 0f
-    private var mLineColor = ContextCompat.getColor(getContext(), R.color.material_orange_700)
+    private var mLineColor = ContextCompat.getColor(getContext(), R.color.color_orange_700)
 
     private val mPaint: Paint by lazy{
         Paint().apply {

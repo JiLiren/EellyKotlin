@@ -1,27 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:transitionName="@string/transitionName_details"
     android:background="@color/color_background"
     tools:context=".view.activity.MainActivity">
 
-    <LinearLayout
+
+    <com.eelly.core.widget.PagerBanner
+        android:id="@+id/mPagerBanner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:transitionName="@string/transitionName_details"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:TopOffset="48dp">
 
         <ImageView
+            android:id="@+id/mBannerIv"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_480"/>
 
-    </LinearLayout>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/mTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            app:tabIndicatorColor="@color/color_orange_700"
+            app:tabSelectedTextColor="@color/color_orange_700"
+            app:tabTextColor="@color/text_default" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" />
+
+    </com.eelly.core.widget.PagerBanner>
 
 
 
 
 
-</RelativeLayout>
+
+
+
+
+</LinearLayout>

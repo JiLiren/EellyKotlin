@@ -18,9 +18,7 @@ import java.util.concurrent.TimeUnit
 
 class LauncherLeftFragment : XFragment(){
 
-    override fun contentView(): Int {
-        return R.layout.fragment_launcher_left
-    }
+    override fun contentView(): Int = R.layout.fragment_launcher_left
 
     override fun initView() {
         ViewCompat.setTransitionName(mLogoIv, getString(R.string.transitionName_logo))

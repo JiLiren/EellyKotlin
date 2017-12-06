@@ -20,6 +20,9 @@
     <string name="text_director">导演：%s</string>
     <string name="text_load_more">加载更多&#8230;&#8230;&#8230;</string>
 
+    <string name="text_table_comment">评论</string>
+    <string name="text_table_discuss">讨论区</string>
+
 
     <string name="transitionName_logo">transitionName_logo</string>
     <string name="transitionName_git">transitionName_git</string>

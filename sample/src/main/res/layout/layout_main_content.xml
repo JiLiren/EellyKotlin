@@ -23,7 +23,7 @@
                 android:id="@+id/mBannerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:lineColor="@color/material_amber_700"
+                app:lineColor="@color/color_amber_700"
                 app:layout_collapseMode="parallax"/>
 
 

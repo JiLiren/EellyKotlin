@@ -15,9 +15,7 @@ import kotlinx.android.synthetic.main.fragment_launcher_right.*
 
 class LauncherRightFragment : XFragment(){
 
-    override fun contentView(): Int {
-        return R.layout.fragment_launcher_right
-    }
+    override fun contentView(): Int = R.layout.fragment_launcher_right
 
     override fun initView() {
     }
