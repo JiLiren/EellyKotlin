@@ -5,6 +5,7 @@ import android.support.v4.view.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
 import com.eelly.core.event.OnBannerClickListener
+import java.util.*
 
 
 /**
@@ -13,8 +14,8 @@ import com.eelly.core.event.OnBannerClickListener
 class BannerAdapter(var context:Context,var mEntities :List<BannerEntity>) : PagerAdapter(){
 
 
-    var mLayouts :ArrayList<BannerLayout> = ArrayList()
-    lateinit var mListener : OnBannerClickListener
+    var mLayouts : ArrayList<BannerLayout> = ArrayList()
+    var mListener : OnBannerClickListener ? =null
 
     init {
         setLayouts()
@@ -40,7 +41,7 @@ class BannerAdapter(var context:Context,var mEntities :List<BannerEntity>) : Pag
 
         bannerLayout.setOnClickListener {
             if (mListener != null) {
-                mListener.onClick(position - 1)
+                mListener!!.onClick(position - 1)
             }
         }
         container.addView(bannerLayout, 0)

@@ -1,6 +1,9 @@
 package com.eelly.core.widget.banner
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Handler
+import android.os.Message
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.util.AttributeSet
@@ -8,11 +11,8 @@ import android.view.View
 import android.widget.FrameLayout
 import com.eelly.core.R
 import com.eelly.core.event.OnBannerClickListener
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.layout_banner.view.*
-import java.util.concurrent.TimeUnit
+import java.util.*
 
 
 /**
@@ -24,9 +24,14 @@ class BannerView : FrameLayout {
 
     private val mEntities:ArrayList<BannerEntity> = ArrayList()
 
-    private val mAdapter = BannerAdapter(context,mEntities)
+    private var mAdapter = BannerAdapter(context,mEntities)
 
     private var currentIdx = 0
+
+    private val mMainHandler: Handler
+
+    private var mTimer: Timer? = null
+    private var mAutoScrollTimer: Timer? = null
 
 
     constructor(context: Context) :this(context,null)
@@ -43,9 +48,20 @@ class BannerView : FrameLayout {
                 ContextCompat.getColor(getContext(), R.color.material_orange_700))
         typeArray.recycle()
         mLine.setLineColor(lineColor)
-//        mMainHandler = Handler(context.getMainLooper())
+        mMainHandler = Handler(context.mainLooper)
     }
 
+    @SuppressLint("HandlerLeak")
+    private val mHandler = object : Handler() {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            if (currentIdx >= mEntities.size) {
+                currentIdx = 0
+            }
+            mViewPager.setCurrentItem(currentIdx, true)
+            currentIdx++
+        }
+    }
 
     fun setEntities(entities: List<BannerEntity>) {
         addExtraPage(entities)
@@ -57,6 +73,7 @@ class BannerView : FrameLayout {
         mEntities.add(entities[entities.size - 1])
         mEntities.addAll(entities)
         mEntities.add(entities[0])
+        mAdapter.notifyDataSetChanged()
     }
 
     private fun showBanner() {
@@ -99,19 +116,19 @@ class BannerView : FrameLayout {
         mLine.setPageScrolled(position + 1, 0f)
         setViewPagerItemPosition(position + 1)
     }
-
-    fun startAutoScroll() {
-        Observable.timer(mAutoScrollDelay, TimeUnit.SECONDS).observeOn(Schedulers.io()).
-                subscribeOn(AndroidSchedulers.mainThread()).subscribe({
-                    nextScroll()
-//                    if (currentIdx >= mEntities.size) {
-//                        currentIdx = 0
-//                    }
-//                    mViewPager.setCurrentItem(currentIdx, true)
-//                    currentIdx++
-        })
-    }
-
+//
+//    fun startAutoScroll() {
+//        mAutoScrollTimer = Timer()
+//        mAutoScrollTimer.schedule(object : TimerTask() {
+//            override fun run() {
+//                mMainHandler.post { nextScroll() }
+//            }
+//        }, mAutoScrollDelay, mAutoScrollDelay)
+//    }
+//
+//    fun stopAutoScroll() {
+//        mAutoScrollTimer.cancel()
+//    }
     fun setAutoScrollDelay(delay: Long) {
         mAutoScrollDelay = delay
     }
