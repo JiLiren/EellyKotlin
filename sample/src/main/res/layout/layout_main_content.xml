@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="@color/color_f1903A"
+            android:fitsSystemWindows="true"
             app:expandedTitleMarginStart="@dimen/dimen_15"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -32,74 +33,91 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_48"
                 app:layout_collapseMode="pin"
+                app:title="@string/app_name"
                 app:layout_scrollFlags="scroll|enterAlways" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/mScrollView"
+    <com.eelly.core.widget.refresh.RefreshLayout
+        android:id="@+id/mRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+        android:background="@android:color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:srlPrimaryColor="@color/colorPrimary"
+        app:srlAccentColor="@android:color/white"
+        app:srlEnableLoadMore="false">
 
-        <LinearLayout
+        <com.eelly.widget.TaurusHeader
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_marginLeft="@dimen/dimen_2"
+            android:layout_marginRight="@dimen/dimen_2"/>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/mRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/dimen_2"
-                android:layout_marginRight="@dimen/dimen_2"/>
-
-            <LinearLayout
-                android:id="@+id/mMoreLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/dimen_2"
-                android:visibility="gone"
-                android:orientation="horizontal">
-
-                <ProgressBar
-                    android:id="@+id/mLoadPb"
-                    android:layout_width="@dimen/dimen_35"
-                    android:layout_height="@dimen/dimen_35"
-                    android:indeterminate="true"
-                    android:indeterminateOnly="true"
-                    android:indeterminateBehavior="cycle"
-                    android:indeterminateDrawable="@drawable/list_load"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_13"
-                    android:textColor="@color/text_3"
-                    android:layout_marginLeft="@dimen/dimen_6"
-                    android:text="@string/text_load_more"/>
-
-            </LinearLayout>
-        </LinearLayout>
-
-
-    </android.support.v4.widget.NestedScrollView>
+    </com.eelly.core.widget.refresh.RefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/mRefreshBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_5"
-        android:src="@drawable/ic_refresh"
+        app:srcCompat="@drawable/ic_refresh"
         app:elevation="@dimen/dimen_5"
         app:rippleColor="#88ffffff"
         app:fabSize="normal"
         app:layout_anchor="@id/layout_app_bar"
         app:layout_anchorGravity="bottom|end" />
 
-
-
 </android.support.design.widget.CoordinatorLayout>
+
+<!--<android.support.v4.widget.NestedScrollView-->
+<!--android:id="@+id/mScrollView"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--app:layout_behavior="@string/appbar_scrolling_view_behavior" >-->
+
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
+
+
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/mMoreLayout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center"-->
+        <!--android:padding="@dimen/dimen_2"-->
+        <!--android:visibility="gone"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<ProgressBar-->
+            <!--android:id="@+id/mLoadPb"-->
+            <!--android:layout_width="@dimen/dimen_35"-->
+            <!--android:layout_height="@dimen/dimen_35"-->
+            <!--android:indeterminate="true"-->
+            <!--android:indeterminateOnly="true"-->
+            <!--android:indeterminateBehavior="cycle"-->
+            <!--android:indeterminateDrawable="@drawable/list_load"/>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="@dimen/text_13"-->
+            <!--android:textColor="@color/text_3"-->
+            <!--android:layout_marginLeft="@dimen/dimen_6"-->
+            <!--android:text="@string/text_load_more"/>-->
+
+    <!--</LinearLayout>-->
+<!--</LinearLayout>-->
+
+
+<!--</android.support.v4.widget.NestedScrollView>-->

@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="RefreshLayout_Layout">
+        <attr name="layout_srlSpinnerStyle"/>
+        <attr name="layout_srlBackgroundColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="RefreshLayout">
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlReboundDuration" format="integer"/>
+        <attr name="srlHeaderHeight" format="dimension"/>
+        <attr name="srlFooterHeight" format="dimension"/>
+        <attr name="srlDragRate" format="float"/>
+        <attr name="srlHeaderMaxDragRate" format="float"/>
+        <attr name="srlFooterMaxDragRate" format="float"/>
+        <attr name="srlHeaderTriggerRate" format="float"/>
+        <attr name="srlFooterTriggerRate" format="float"/>
+        <attr name="srlEnableRefresh" format="boolean"/>
+        <attr name="srlEnableLoadMore" format="boolean"/>
+        <attr name="srlEnableHeaderTranslationContent" format="boolean"/>
+        <attr name="srlEnableFooterTranslationContent" format="boolean"/>
+        <attr name="srlEnablePreviewInEditMode" format="boolean"/>
+        <attr name="srlEnableAutoLoadMore" format="boolean"/>
+        <attr name="srlEnableOverScrollBounce" format="boolean"/>
+        <attr name="srlEnablePureScrollMode" format="boolean"/>
+        <attr name="srlEnableNestedScrolling" format="boolean"/>
+        <attr name="srlEnableScrollContentWhenLoaded" format="boolean"/>
+        <attr name="srlEnableScrollContentWhenRefreshed" format="boolean"/>
+        <attr name="srlEnableLoadMoreWhenContentNotFull" format="boolean"/>
+        <attr name="srlEnableFooterFollowWhenLoadFinished" format="boolean"/>
+        <attr name="srlEnableOverScrollDrag" format="boolean"/>
+        <attr name="srlDisableContentWhenRefresh" format="boolean"/>
+        <attr name="srlDisableContentWhenLoading" format="boolean"/>
+        <attr name="srlFixedHeaderViewId" format="reference"/>
+        <attr name="srlFixedFooterViewId" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="DefaultHeader">
+        <attr name="srlDefaultSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlTextSizeTime"/>
+        <attr name="srlTextTimeMarginTop" format="dimension"/>
+        <attr name="srlEnableLastTime" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="DefaultFooter">
+        <attr name="srlDefaultSpinnerStyle"/>
+        <attr name="srlPrimaryColor"/>
+        <attr name="srlAccentColor"/>
+        <attr name="srlFinishDuration"/>
+        <attr name="srlTextSizeTitle"/>
+        <attr name="srlDrawableArrow"/>
+        <attr name="srlDrawableProgress"/>
+        <attr name="srlDrawableMarginRight"/>
+        <attr name="srlDrawableSize"/>
+        <attr name="srlDrawableArrowSize"/>
+        <attr name="srlDrawableProgressSize"/>
+    </declare-styleable>
+
     <declare-styleable name="banner">
         <attr name="lineColor" format="color" />
     </declare-styleable>
