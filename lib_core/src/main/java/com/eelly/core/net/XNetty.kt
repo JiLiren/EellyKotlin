@@ -1,4 +1,4 @@
-package com.eelly.net
+package com.eelly.core.net
 
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers

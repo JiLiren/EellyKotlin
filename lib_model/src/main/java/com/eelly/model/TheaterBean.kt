@@ -1,4 +1,4 @@
-package com.eelly.bean
+package com.eelly.model
 
 /**
  * @author Vurtne on 22-Nov-17.

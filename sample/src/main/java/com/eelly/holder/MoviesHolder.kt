@@ -13,12 +13,10 @@ import com.eelly.widget.XRatingBar
  *
  */
 class MoviesHolder(rootView :View) : RecyclerView.ViewHolder(rootView){
-
-    var mBannerIv : ImageView = rootView.findViewById(R.id.mPosterIv) as ImageView
-    var mNameTv : TextView = rootView.findViewById(R.id.mNameTv) as TextView
-    var mRateRb : XRatingBar = rootView.findViewById(R.id.mRateRb) as XRatingBar
-    var mActorTv : TextView = rootView.findViewById(R.id.mActorTv) as TextView
-    var mDirectorTv : TextView = rootView.findViewById(R.id.mDirectorTv) as TextView
-    var mClickLayout : LinearLayout = rootView.findViewById(R.id.mClickLayout) as LinearLayout
-
+    var mBannerIv : ImageView = rootView.findViewById<ImageView>(R.id.mPosterIv)
+    var mNameTv : TextView = rootView.findViewById<TextView>(R.id.mNameTv)
+    var mRateRb : XRatingBar = rootView.findViewById<XRatingBar>(R.id.mRateRb)
+    var mActorTv : TextView = rootView.findViewById<TextView>(R.id.mActorTv)
+    var mDirectorTv : TextView = rootView.findViewById<TextView>(R.id.mDirectorTv)
+    var mClickLayout : LinearLayout = rootView.findViewById<LinearLayout>(R.id.mClickLayout)
 }

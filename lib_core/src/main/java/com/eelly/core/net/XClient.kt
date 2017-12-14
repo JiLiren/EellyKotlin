@@ -1,6 +1,5 @@
-package com.eelly.net
+package com.eelly.core.net
 
-import com.eelly.manage.AccountManager
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -23,7 +22,7 @@ class XClient {
                 val originalRequest = chain.request()
                 val request: Request
                 val modifiedUrl = originalRequest.url().newBuilder()
-                        .addQueryParameter("token", AccountManager().getToken())
+                        .addQueryParameter("token", "")
                         .build()
                 request = originalRequest.newBuilder().url(modifiedUrl).build()
                 chain.proceed(request)

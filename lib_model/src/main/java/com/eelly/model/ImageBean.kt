@@ -1,4 +1,4 @@
-package com.eelly.bean
+package com.eelly.model
 
 import android.os.Parcel
 import android.os.Parcelable

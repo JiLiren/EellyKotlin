@@ -1,5 +1,8 @@
 package com.eelly.view.fragment
 
+import android.annotation.TargetApi
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.support.v4.view.ViewCompat
 import android.transition.ChangeBounds
 import android.transition.Slide
@@ -32,6 +35,8 @@ class LauncherLeftFragment : XFragment(){
     override fun initEvent() {
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun initData() {
 
         val fragment = LauncherRightFragment()
@@ -47,7 +52,7 @@ class LauncherLeftFragment : XFragment(){
         fragment.sharedElementEnterTransition = changeBoundsTransition
         Flowable.timer(2, TimeUnit.SECONDS).subscribe {
             if(isVisible){
-                fragmentManager.beginTransaction()
+                fragmentManager!!.beginTransaction()
                         .replace(R.id.layout_content, fragment)
                         .addToBackStack(null)
                         .addSharedElement(mLogoIv, getString(R.string.transitionName_logo))

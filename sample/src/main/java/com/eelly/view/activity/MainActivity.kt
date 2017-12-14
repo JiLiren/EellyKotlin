@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewTreeObserver
 import com.eelly.R
 import com.eelly.adapter.MoviesAdapter
-import com.eelly.bean.TheaterBean
 import com.eelly.contract.IMainContract
 import com.eelly.core.base.XActivity
 import com.eelly.core.util.LogUtil
+import com.eelly.model.TheaterBean
 import com.eelly.present.MainPresenter
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.layout_main_content.*

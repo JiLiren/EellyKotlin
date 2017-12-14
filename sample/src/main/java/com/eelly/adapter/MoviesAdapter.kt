@@ -12,15 +12,17 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.eelly.R
-import com.eelly.bean.MovieBean
 import com.eelly.core.tools.TransitionHelper
 import com.eelly.holder.MoviesHolder
+import com.eelly.model.MovieBean
 import com.eelly.view.activity.DetailsActivity
 
 /**
  * @author Vurtne on 20-Nov-17.
+ *
+ * @param mMovies 电影
  */
-class MoviesAdapter(var mMovies:ArrayList<MovieBean>,var context: Context) : Adapter<MoviesHolder>() {
+class MoviesAdapter(private var mMovies:ArrayList<MovieBean>,var context: Context) : Adapter<MoviesHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MoviesHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_movies, parent, false)

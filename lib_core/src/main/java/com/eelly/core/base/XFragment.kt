@@ -35,12 +35,11 @@ abstract class XFragment: Fragment() {
 
     private var mArgs: Bundle? = null
 
-
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(contentView(), container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(contentView(), container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mView = view
         ButterKnife.bind(this, mView!!)
@@ -53,11 +52,12 @@ abstract class XFragment: Fragment() {
         initEvent()
     }
 
+
     override fun getView(): View? {
         return mView
     }
 
-    override fun setArguments(args: Bundle) {
+    override fun setArguments(args: Bundle?) {
         super.setArguments(args)
         mArgs = Bundle(args)
     }

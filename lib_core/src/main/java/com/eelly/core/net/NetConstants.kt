@@ -1,4 +1,4 @@
-package com.eelly.net
+package com.eelly.core.net
 
 /**
  * @author Vurtne on 21-Nov-17.
