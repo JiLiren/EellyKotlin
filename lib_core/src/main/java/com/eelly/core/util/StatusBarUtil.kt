@@ -44,7 +44,7 @@ object StatusBarUtil {
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             activity.window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
             val decorView = activity.window.decorView as ViewGroup
-            val fakeStatusBarView = decorView.findViewById(FAKE_STATUS_BAR_VIEW_ID)
+            val fakeStatusBarView = decorView.findViewById<View>(FAKE_STATUS_BAR_VIEW_ID)
             if (fakeStatusBarView != null) {
                 if (fakeStatusBarView.visibility == View.GONE) {
                     fakeStatusBarView.visibility = View.VISIBLE
@@ -61,7 +61,7 @@ object StatusBarUtil {
      * 设置根布局参数
      */
     private fun setRootView(activity: Activity) {
-        val parent = activity.findViewById(android.R.id.content) as ViewGroup
+        val parent = activity.findViewById<ViewGroup>(android.R.id.content)
         var i = 0
         val count = parent.childCount
         while (i < count) {
@@ -117,8 +117,8 @@ object StatusBarUtil {
      * @param statusBarAlpha 透明值
      */
     private fun addTranslucentView(activity: Activity, statusBarAlpha: Int) {
-        val contentView = activity.findViewById(android.R.id.content) as ViewGroup
-        val fakeTranslucentView = contentView.findViewById(FAKE_TRANSLUCENT_VIEW_ID)
+        val contentView = activity.findViewById<ViewGroup>(android.R.id.content)
+        val fakeTranslucentView = contentView.findViewById<View>(FAKE_TRANSLUCENT_VIEW_ID)
         if (fakeTranslucentView != null) {
             if (fakeTranslucentView.visibility == View.GONE) {
                 fakeTranslucentView.visibility = View.VISIBLE
