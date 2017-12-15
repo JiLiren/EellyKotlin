@@ -47,7 +47,7 @@ import java.util.ArrayList
 /**
  * @author Vurtne on 5-Dec-17.
  */
-class RefreshLayout : ViewGroup(), IRefreshLayout, NestedScrollingParent, NestedScrollingChild {
+class RefreshLayout : ViewGroup, IRefreshLayout, NestedScrollingParent, NestedScrollingChild {
 
     //<editor-fold desc="属性变量 property and variable">
 
@@ -537,22 +537,22 @@ class RefreshLayout : ViewGroup(), IRefreshLayout, NestedScrollingParent, Nested
         }
 
         if (mRefreshListener == null) {
-            mRefreshListener = object : OnRefreshListener() {
+            mRefreshListener = object : OnRefreshListener {
                 override fun onRefresh(layout: IRefreshLayout) {
                     layout.finishRefresh(3000)
                 }
             }
         }
         if (mLoadMoreListener == null) {
-            mLoadMoreListener = object : OnLoadMoreListener() {
+            mLoadMoreListener = object : OnLoadMoreListener {
                 override fun onLoadMore(layout: IRefreshLayout) {
                     layout.finishLoadMore(2000)
                 }
             }
         }
         if (mPrimaryColors != null) {
-            mRefreshHeader!!.setPrimaryColors(mPrimaryColors)
-            mRefreshFooter!!.setPrimaryColors(mPrimaryColors)
+            mRefreshHeader!!.setPrimaryColors(mPrimaryColors!!)
+            mRefreshFooter!!.setPrimaryColors(mPrimaryColors!!)
         }
         if (!mManualNestedScrolling && !isNestedScrollingEnabled) {
             var parent: ViewParent? = parent
@@ -2328,19 +2328,19 @@ class RefreshLayout : ViewGroup(), IRefreshLayout, NestedScrollingParent, Nested
     /**
      * 设置主题颜色
      */
-    override fun setPrimaryColorsId(@ColorRes vararg primaryColorId: IntArray): IRefreshLayout {
+    override fun setPrimaryColorsId(@ColorRes primaryColorId: IntArray): IRefreshLayout {
         val colors = IntArray(primaryColorId.size)
         for (i in primaryColorId.indices) {
             colors[i] = ContextCompat.getColor(context, primaryColorId[i])
         }
-        setPrimaryColors(*colors)
+        setPrimaryColors(colors)
         return this
     }
 
     /**
      * 设置主题颜色
      */
-    override fun setPrimaryColors(vararg colors: IntArray): IRefreshLayout {
+    override fun setPrimaryColors(colors: IntArray): IRefreshLayout {
         if (mRefreshHeader != null) {
             mRefreshHeader!!.setPrimaryColors(colors)
         }

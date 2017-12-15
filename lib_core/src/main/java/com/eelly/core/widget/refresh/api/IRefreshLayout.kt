@@ -208,12 +208,12 @@ interface IRefreshLayout {
     /**
      * 设置主题颜色
      */
-    fun setPrimaryColorsId(@ColorRes vararg primaryColorId: IntArray): IRefreshLayout
+    fun setPrimaryColorsId(@ColorRes primaryColorId: IntArray): IRefreshLayout
 
     /**
      * 设置主题颜色
      */
-    fun setPrimaryColors(vararg colors: IntArray): IRefreshLayout
+    fun setPrimaryColors(colors: IntArray): IRefreshLayout
 
     /**
      * 设置滚动边界判断器

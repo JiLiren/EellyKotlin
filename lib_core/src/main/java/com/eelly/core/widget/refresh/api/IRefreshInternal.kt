@@ -25,7 +25,7 @@ interface IRefreshInternal : OnStateChangedListener {
      * 设置主题颜色
      * @param colors 对应Xml中配置的 srlPrimaryColor srlAccentColor
      */
-    fun setPrimaryColors(@ColorInt vararg colors: IntArray)
+    fun setPrimaryColors(@ColorInt colors: IntArray)
 
     /**
      * 尺寸定义完成 （如果高度不改变（代码修改：setHeader），只调用一次, 在RefreshLayout#onMeasure中调用）

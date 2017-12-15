@@ -167,7 +167,7 @@ class TaurusHeader : View, IRefreshHeader {
     }
 
     @Deprecated("")
-    override fun setPrimaryColors(@ColorInt vararg colors: Int) {
+    override fun setPrimaryColors(@ColorInt colors: IntArray) {
         setBackgroundColor(colors[0])
     }
 

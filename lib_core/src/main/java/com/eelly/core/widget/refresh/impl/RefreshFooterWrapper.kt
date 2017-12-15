@@ -24,7 +24,7 @@ class RefreshFooterWrapper(val mWrapperView: View) : IRefreshFooter {
     override fun onFinish(layout: IRefreshLayout, success: Boolean): Int = 0
 
     @Deprecated("")
-    override fun setPrimaryColors(@ColorInt vararg colors: Int) {
+    override fun setPrimaryColors(@ColorInt colors: IntArray) {
 
     }
 

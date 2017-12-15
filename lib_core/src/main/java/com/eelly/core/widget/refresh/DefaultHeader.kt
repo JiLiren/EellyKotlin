@@ -298,7 +298,7 @@ class DefaultHeader : RelativeLayout, IRefreshHeader {
     }
 
     @Deprecated("")
-    override fun setPrimaryColors(@ColorInt vararg colors: IntArray) {
+    override fun setPrimaryColors(@ColorInt colors: IntArray) {
         if (colors.isNotEmpty()) {
             if (background !is BitmapDrawable) {
                 setPrimaryColor(colors[0])

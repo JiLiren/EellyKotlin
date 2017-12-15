@@ -81,7 +81,7 @@ class DefaultFooter : RelativeLayout, IRefreshFooter {
         lpProgress.addRule(RelativeLayout.CENTER_VERTICAL)
         lpProgress.addRule(RelativeLayout.LEFT_OF, android.R.id.widget_frame)
         mProgressView = ImageView(context)
-        mProgressView!!.animate().setInterpolator(LinearInterpolator())
+        mProgressView!!.animate().interpolator = LinearInterpolator()
         addView(mProgressView, lpProgress)
 
         if (!isInEditMode) {
@@ -234,7 +234,7 @@ class DefaultFooter : RelativeLayout, IRefreshFooter {
      * ClassicsFooter 在(SpinnerStyle.FixedBehind)时才有主题色
      */
     @Deprecated("")
-    override fun setPrimaryColors(@ColorInt vararg colors: Int) {
+    override fun setPrimaryColors(@ColorInt colors: IntArray) {
         if (mSpinnerStyle === SpinnerStyle.FixedBehind) {
             if (colors.isNotEmpty()) {
                 if (background !is BitmapDrawable) {
