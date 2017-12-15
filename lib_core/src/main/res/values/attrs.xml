@@ -6,6 +6,10 @@
         <attr name="layout_srlBackgroundColor" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="TaurusHeader">
+        <attr name="thPrimaryColor" format="color" />
+    </declare-styleable>
+
     <declare-styleable name="RefreshLayout">
         <attr name="srlPrimaryColor"/>
         <attr name="srlAccentColor"/>

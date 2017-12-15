@@ -14,7 +14,4 @@
         <attr name="halfstart" format="boolean"/>
     </declare-styleable>
 
-    <declare-styleable name="TaurusHeader">
-        <attr name="thPrimaryColor" format="color" />
-    </declare-styleable>
 </resources>

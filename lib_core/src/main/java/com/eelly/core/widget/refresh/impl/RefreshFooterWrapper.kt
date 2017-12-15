@@ -41,10 +41,12 @@ class RefreshFooterWrapper(val mWrapperView: View) : IRefreshFooter {
         }
         if (params != null) {
             if (params.height == 0) {
-                return mSpinnerStyle = SpinnerStyle.Scale
+                mSpinnerStyle = SpinnerStyle.Scale
+                return mSpinnerStyle!!
             }
         }
-        return mSpinnerStyle = SpinnerStyle.Translate
+        mSpinnerStyle = SpinnerStyle.Translate
+        return mSpinnerStyle!!
     }
 
     override fun onInitialized(kernel: IRefreshKernel, height: Int, extendHeight: Int) {

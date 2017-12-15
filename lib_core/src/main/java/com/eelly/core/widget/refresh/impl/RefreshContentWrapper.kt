@@ -147,7 +147,7 @@ class RefreshContentWrapper : IRefreshContent {
             val point = PointF()
             for (i in childCount downTo 1) {
                 val child = content.getChildAt(i - 1)
-                if (ScrollBoundaryUtil.isTransformedTouchPointInView(content, child, event!!.x, event.y, point)) {
+                if (ScrollBoundaryUtil().isTransformedTouchPointInView(content, child, event!!.x, event.y, point)) {
                     return if (child !is ViewPager && isScrollableView(child)) {
                         child
                     } else {
@@ -176,11 +176,11 @@ class RefreshContentWrapper : IRefreshContent {
     }
 
     override fun canRefresh(): Boolean {
-        return mEnableRefresh && mBoundaryAdapter.canRefresh(mContentView)
+        return mEnableRefresh && mBoundaryAdapter.canRefresh(mContentView!!)
     }
 
     override fun canLoadMore(): Boolean {
-        return mEnableLoadmore && mBoundaryAdapter.canLoadmore(mContentView)
+        return mEnableLoadmore && mBoundaryAdapter.canLoadmore(mContentView!!)
     }
 
     override fun measure(widthSpec: Int, heightSpec: Int) {
@@ -210,7 +210,7 @@ class RefreshContentWrapper : IRefreshContent {
     override fun onActionDown(e: MotionEvent) {
         mMotionEvent = MotionEvent.obtain(e)
         mMotionEvent!!.offsetLocation((-mContentView!!.left).toFloat(), (-mContentView!!.top).toFloat())
-        mBoundaryAdapter.setActionEvent(mMotionEvent)
+        mBoundaryAdapter.setActionEvent(mMotionEvent!!)
         mScrollableView = findScrollableViewByEvent(mContentView!!, mMotionEvent, mScrollableView!!)
     }
 
@@ -234,15 +234,15 @@ class RefreshContentWrapper : IRefreshContent {
         }
     }
 
-    override fun setUpComponent(kernel: IRefreshKernel, fixedHeader: View?, fixedFooter: View?) {
+    override fun setUpComponent(kernel: IRefreshKernel, fixedHeader: View, fixedFooter: View) {
         findScrollableView(mContentView, kernel)
 
         if (fixedHeader != null || fixedFooter != null) {
             mFixedHeader = fixedHeader
             mFixedFooter = fixedFooter
-            val frameLayout = FrameLayout(mContentView.getContext())
+            val frameLayout = FrameLayout(mContentView!!.getContext())
             kernel.getRefreshLayout().getLayout().removeView(mContentView)
-            val layoutParams = mContentView.getLayoutParams()
+            val layoutParams = mContentView!!.getLayoutParams()
             frameLayout.addView(mContentView, MATCH_PARENT, MATCH_PARENT)
             kernel.getRefreshLayout().getLayout().addView(frameLayout, layoutParams)
             mContentView = frameLayout
@@ -290,10 +290,11 @@ class RefreshContentWrapper : IRefreshContent {
 
     override fun scrollContentWhenFinished(spinner: Int): ValueAnimator.AnimatorUpdateListener {
         if (mScrollableView != null && spinner != 0) {
-            if (spinner < 0 && ScrollBoundaryUtil.canScrollDown(mScrollableView)
-                    || spinner > 0 && ScrollBoundaryUtil.canScrollUp(mScrollableView)) {
+            if (spinner < 0 && ScrollBoundaryUtil().canScrollDown(mScrollableView!!)
+                    || spinner > 0 && ScrollBoundaryUtil().canScrollUp(mScrollableView!!)) {
                 return object : ValueAnimator.AnimatorUpdateListener {
                     internal var lastValue = spinner
+                    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
                     override fun onAnimationUpdate(animation: ValueAnimator) {
                         val value = animation.animatedValue as Int
                         try {

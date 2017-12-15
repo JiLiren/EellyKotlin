@@ -6,7 +6,7 @@ import com.eelly.core.widget.refresh.api.IRefreshHeader
 /**
  * @author Vurtne on 14-Dec-17.
  */
-interface OnMultiPurposeListener {
+interface OnMultiPurposeListener :OnRefreshLoadMoreListener, OnStateChangedListener  {
     fun onHeaderPulling(header: IRefreshHeader, percent: Float, offset: Int, headerHeight: Int, extendHeight: Int)
     fun onHeaderReleased(header: IRefreshHeader, headerHeight: Int, extendHeight: Int)
     fun onHeaderReleasing(header: IRefreshHeader, percent: Float, offset: Int, headerHeight: Int, extendHeight: Int)

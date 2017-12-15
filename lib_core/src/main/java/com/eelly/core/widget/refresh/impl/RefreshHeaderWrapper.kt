@@ -30,21 +30,23 @@ class RefreshHeaderWrapper(val mWrapperView : View) : IRefreshHeader {
 
     override fun getSpinnerStyle(): SpinnerStyle {
         if (mSpinnerStyle != null) {
-            return mSpinnerStyle
+            return mSpinnerStyle!!
         }
         val params = mWrapperView.layoutParams
         if (params is RefreshLayout.LayoutParams) {
             mSpinnerStyle = params.spinnerStyle
             if (mSpinnerStyle != null) {
-                return mSpinnerStyle
+                return mSpinnerStyle!!
             }
         }
         if (params != null) {
             if (params.height == LayoutParams.MATCH_PARENT) {
-                return mSpinnerStyle = SpinnerStyle.Scale
+                mSpinnerStyle = SpinnerStyle.Scale
+                return mSpinnerStyle!!
             }
         }
-        return mSpinnerStyle = SpinnerStyle.Translate
+        mSpinnerStyle = SpinnerStyle.Translate
+        return mSpinnerStyle!!
     }
 
     override fun onInitialized(kernel: IRefreshKernel, height: Int, extendHeight: Int) {

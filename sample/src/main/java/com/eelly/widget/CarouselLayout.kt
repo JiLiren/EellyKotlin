@@ -10,6 +10,4 @@ import android.widget.RelativeLayout
 
 class CarouselLayout(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) :
         RelativeLayout(context, attrs, defStyleAttr) {
-
-
 }
