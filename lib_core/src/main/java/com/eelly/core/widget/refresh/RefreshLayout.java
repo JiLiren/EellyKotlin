@@ -40,27 +40,6 @@ import android.widget.Scroller;
 
 
 import com.eelly.core.R;
-import com.eelly.core.widget.refresh.api.DefaultRefreshFooterCreater;
-import com.eelly.core.widget.refresh.api.DefaultRefreshHeaderCreater;
-import com.eelly.core.widget.refresh.api.IRefreshContent;
-import com.eelly.core.widget.refresh.api.IRefreshFooter;
-import com.eelly.core.widget.refresh.api.IRefreshHeader;
-import com.eelly.core.widget.refresh.api.IRefreshKernel;
-import com.eelly.core.widget.refresh.api.IRefreshLayout;
-import com.eelly.core.widget.refresh.api.ScrollBoundaryDecider;
-import com.eelly.core.widget.refresh.constant.DimensionStatus;
-import com.eelly.core.widget.refresh.constant.RefreshState;
-import com.eelly.core.widget.refresh.constant.SpinnerStyle;
-import com.eelly.core.widget.refresh.impl.RefreshContentWrapper;
-import com.eelly.core.widget.refresh.impl.RefreshFooterWrapper;
-import com.eelly.core.widget.refresh.impl.RefreshHeaderWrapper;
-import com.eelly.core.widget.refresh.listener.OnLoadMoreListener;
-import com.eelly.core.widget.refresh.listener.OnMultiPurposeListener;
-import com.eelly.core.widget.refresh.listener.OnRefreshListener;
-import com.eelly.core.widget.refresh.listener.OnRefreshLoadMoreListener;
-import com.eelly.core.widget.refresh.tools.DelayedRunable;
-import com.eelly.core.widget.refresh.tools.DensityUtil;
-import com.eelly.core.widget.refresh.tools.ViscousFluidInterpolator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -619,7 +598,6 @@ public class RefreshLayout extends ViewGroup implements IRefreshLayout, NestedSc
     protected void onMeasure(final int widthMeasureSpec,final int heightMeasureSpec) {
         int minimumHeight = 0;
         final boolean isInEditMode = isInEditMode() && mEnablePreviewInEditMode;
-
         for (int i = 0, len = getChildCount(); i < len; i++) {
             View child = getChildAt(i);
 

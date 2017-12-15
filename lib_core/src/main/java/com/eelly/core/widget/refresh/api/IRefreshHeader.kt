@@ -1,13 +1,11 @@
-package com.eelly.core.widget.refresh.api;
+package com.eelly.core.widget.refresh.api
 
-import com.eelly.core.widget.refresh.constant.RefreshState;
 
 /**
  * @author Vurtne on 14-Dec-17.
  */
 
-public interface IRefreshHeader extends IRefreshInternal{
-
+interface IRefreshHeader :IRefreshInternal{
     /**
      * 手指拖动下拉（会连续多次调用）
      * @param percent 下拉的百分比 值 = offset/headerHeight (0 - percent - (headerHeight+extendHeight) / headerHeight )
@@ -15,7 +13,7 @@ public interface IRefreshHeader extends IRefreshInternal{
      * @param headerHeight Header的高度
      * @param extendHeight Header的扩展高度
      */
-    void onPullingDown(float percent, int offset, int headerHeight, int extendHeight);
+    fun onPullingDown(percent: Float, offset: Int, headerHeight: Int, extendHeight: Int)
 
     /**
      * 手指释放之后的持续动画
@@ -24,7 +22,7 @@ public interface IRefreshHeader extends IRefreshInternal{
      * @param headerHeight Header的高度
      * @param extendHeight Header的扩展高度
      */
-    void onReleasing(float percent, int offset, int headerHeight, int extendHeight);
+    fun onReleasing(percent: Float, offset: Int, headerHeight: Int, extendHeight: Int)
 
     /**
      * 释放时刻（调用一次，将会触发加载）
@@ -32,7 +30,5 @@ public interface IRefreshHeader extends IRefreshInternal{
      * @param headerHeight HeaderHeight
      * @param extendHeight extendHeaderHeight or extendFooterHeight
      */
-    void onRefreshReleased(IRefreshLayout layout, int headerHeight, int extendHeight);
-
-    void onStateChanged(IRefreshLayout refreshLayout, RefreshState oldState, RefreshState newState);
+    fun onRefreshReleased(layout: IRefreshLayout, headerHeight: Int, extendHeight: Int)
 }

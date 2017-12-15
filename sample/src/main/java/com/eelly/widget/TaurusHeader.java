@@ -19,13 +19,7 @@ import android.view.animation.Transformation;
 
 
 import com.eelly.R;
-import com.eelly.core.widget.refresh.api.IRefreshHeader;
-import com.eelly.core.widget.refresh.api.IRefreshKernel;
-import com.eelly.core.widget.refresh.api.IRefreshLayout;
-import com.eelly.core.widget.refresh.constant.RefreshState;
-import com.eelly.core.widget.refresh.constant.SpinnerStyle;
 import com.eelly.core.widget.refresh.path.PathsDrawable;
-import com.eelly.core.widget.refresh.tools.DensityUtil;
 
 import java.util.HashMap;
 import java.util.Map;
