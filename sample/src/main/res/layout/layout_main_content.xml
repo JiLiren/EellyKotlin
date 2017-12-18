@@ -50,7 +50,7 @@
         app:srlAccentColor="@android:color/white"
         app:srlEnableLoadMore="false">
 
-        <com.eelly.widget.TaurusHeader
+        <com.eelly.core.widget.TaurusHeader
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
