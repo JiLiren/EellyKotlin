@@ -41,6 +41,7 @@ class MainActivity: XActivity(), IMainContract.IView {
         mRecycler.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         mRecycler.isNestedScrollingEnabled = false
 
+
 //        mMoreLayout.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
 //            override fun onGlobalLayout() {
 //                mMoreHeight = mMoreLayout.measuredHeight
