@@ -1,7 +1,6 @@
 package com.eelly.present
 
 import com.eelly.contract.IMainContract
-import com.eelly.core.widget.banner.BannerEntity
 import com.eelly.core.net.XNetty
 import com.eelly.model.TheaterBean
 import io.reactivex.disposables.CompositeDisposable
