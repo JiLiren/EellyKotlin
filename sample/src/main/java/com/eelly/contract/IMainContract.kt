@@ -2,6 +2,7 @@ package com.eelly.contract
 
 import com.eelly.core.base.XPresenter
 import com.eelly.core.base.XView
+import com.eelly.model.MovieBean
 import com.eelly.model.TheaterBean
 
 /**
@@ -10,8 +11,9 @@ import com.eelly.model.TheaterBean
 interface IMainContract {
 
     interface IPresenter: XPresenter{
-        fun onRefreshMovies()
-        fun onLoadMore()
+        fun refreshMovies()
+        fun loadMore()
+        fun getBannerMove(bean:TheaterBean):List<MovieBean>
     }
 
     interface IView : XView<IPresenter> {

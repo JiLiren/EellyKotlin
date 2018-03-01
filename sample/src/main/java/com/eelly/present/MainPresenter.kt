@@ -2,6 +2,8 @@ package com.eelly.present
 
 import com.eelly.contract.IMainContract
 import com.eelly.core.net.XNetty
+import com.eelly.holder.SortHolder
+import com.eelly.model.MovieBean
 import com.eelly.model.TheaterBean
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Consumer
@@ -27,7 +29,7 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
         mHolder = XNetty()
     }
 
-    override fun onRefreshMovies() {
+    override fun refreshMovies() {
         mView.showLoading()
         mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesList(),
                 Consumer{
@@ -41,7 +43,7 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
                 })
     }
 
-    override fun onLoadMore() {
+    override fun loadMore() {
         mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesMore(
                 mTheaterBean.count + 1,COUNT_PAGE),
                 Consumer{
@@ -52,6 +54,12 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
                 } ,
                 Consumer{
                 })
+    }
+
+    override fun getBannerMove(bean:TheaterBean):List<MovieBean>{
+        val list = ArrayList<MovieBean>()
+        list.addAll(bean.subjects)
+        return SortHolder.onQuickSort(list).subList(0,5)
     }
 
 

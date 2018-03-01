@@ -1,6 +1,5 @@
 package com.eelly.view.activity
 
-import android.app.ProgressDialog
 import android.support.v4.widget.NestedScrollView
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.View
@@ -10,8 +9,11 @@ import com.eelly.adapter.MoviesAdapter
 import com.eelly.contract.IMainContract
 import com.eelly.core.base.XActivity
 import com.eelly.core.util.LogUtil
+import com.eelly.holder.GlideImageLoader
 import com.eelly.model.TheaterBean
 import com.eelly.present.MainPresenter
+import com.youth.banner.BannerConfig
+import com.youth.banner.Transformer
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.layout_main_content.*
 
@@ -24,7 +26,6 @@ class MainActivity: XActivity(), IMainContract.IView {
 
     lateinit var mPresenter: IMainContract.IPresenter
     lateinit var mAdapter:MoviesAdapter
-    var mDialog: ProgressDialog? = null
 
     var mMoreHeight : Int = 0
     var isLoading = false
@@ -58,7 +59,7 @@ class MainActivity: XActivity(), IMainContract.IView {
 
     override fun initEvent() {
         setClick(mRefreshBtn, Consumer {
-            mPresenter.onRefreshMovies()
+            mPresenter.refreshMovies()
         })
 
         mScrollView.setOnScrollChangeListener { view : NestedScrollView, scrollX: Int,
@@ -66,7 +67,7 @@ class MainActivity: XActivity(), IMainContract.IView {
             if (scrollY >= (view.getChildAt(0).measuredHeight - mMoreHeight -
                     view.measuredHeight) && !isLoading) {
                 isLoading = true
-                mPresenter.onLoadMore()
+                mPresenter.loadMore()
             }
         }
 
@@ -74,7 +75,7 @@ class MainActivity: XActivity(), IMainContract.IView {
 
     override fun initData() {
         LogUtil.d(TAG,"onRefreshNew")
-        mPresenter.onRefreshMovies()
+        mPresenter.refreshMovies()
     }
 
     override fun setAdapter(bean: TheaterBean) {
@@ -82,13 +83,14 @@ class MainActivity: XActivity(), IMainContract.IView {
         isLoading = false
         mMoreLayout.visibility = View.VISIBLE
         mRecycler.adapter = mAdapter
+        initBanner(bean)
     }
 
     override fun addAdapter(bean: TheaterBean) {
         if (bean.subjects.size % 20 == 0){
             isLoading = false
         }else{
-//            mMoreLayout.visibility = View.GONE
+            mMoreLayout.visibility = View.GONE
         }
         mAdapter.addBean(bean.subjects)
     }
@@ -99,6 +101,35 @@ class MainActivity: XActivity(), IMainContract.IView {
 
     override fun hideLoading() {
         onShowContent()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mBannerLayout.startAutoPlay()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mBannerLayout.stopAutoPlay()
+    }
+
+    private fun initBanner(bean:TheaterBean){
+        val list = mPresenter.getBannerMove(bean)
+        val images = ArrayList<String>()
+        val titles = ArrayList<String>()
+
+        list.mapTo(images){ it.images.large }
+        list.mapTo(titles){ it.title}
+
+        mBannerLayout.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE)
+        mBannerLayout.setImageLoader(GlideImageLoader())
+        mBannerLayout.setImages(images)
+        mBannerLayout.setBannerAnimation(Transformer.DepthPage)
+        mBannerLayout.setBannerTitles(titles)
+        mBannerLayout.isAutoPlay(true)
+        mBannerLayout.setDelayTime(3000)
+        mBannerLayout.setIndicatorGravity(BannerConfig.CENTER)
+        mBannerLayout.start()
     }
 
 
