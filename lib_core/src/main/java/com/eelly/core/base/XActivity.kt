@@ -68,21 +68,22 @@ open abstract class XActivity : AppCompatActivity(){
 
     protected fun onShowLoading(){
         mLoadView.visibility = View.VISIBLE
-        mLoadLayout.onStartAnimation()
+//        mLoadLayout.onStartAnimation()
     }
 
     protected fun onShowContent(){
-        mLoadLayout.onStopAnimation(
-                object : LoadingLayout.OnFinishListener {
-                    override fun onFinish(status: Int) {
-                        if (status == 0) {
-                            mContentView.visibility = View.VISIBLE
-                        }
-                        if (status == 1) {
-                            mLoadView.visibility = View.GONE
-                        }
-                    }
-        })
+        mLoadView.visibility = View.GONE
+//        mLoadLayout.onStopAnimation(
+//                object : LoadingLayout.OnFinishListener {
+//                    override fun onFinish(status: Int) {
+//                        if (status == 0) {
+//                            mContentView.visibility = View.VISIBLE
+//                        }
+//                        if (status == 1) {
+//                            mLoadView.visibility = View.GONE
+//                        }
+//                    }
+//        })
     }
 
     protected fun getCompositeDisposable(): CompositeDisposable {

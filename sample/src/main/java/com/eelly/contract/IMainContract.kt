@@ -12,7 +12,6 @@ interface IMainContract {
     interface IPresenter: XPresenter{
         fun onRefreshMovies()
         fun onLoadMore()
-        fun onGetBanner():List<BannerEntity>
     }
 
     interface IView : XView<IPresenter> {

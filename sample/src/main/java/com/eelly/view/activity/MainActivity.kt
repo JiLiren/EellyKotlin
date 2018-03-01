@@ -42,12 +42,12 @@ class MainActivity: XActivity(), IMainContract.IView {
         mRecycler.isNestedScrollingEnabled = false
 
 
-//        mMoreLayout.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-//            override fun onGlobalLayout() {
-//                mMoreHeight = mMoreLayout.measuredHeight
-//                mMoreLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
-//            }
-//        })
+        mMoreLayout.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                mMoreHeight = mMoreLayout.measuredHeight
+                mMoreLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
     }
 
     override fun initStatusBar(statusHeight: Int) {
@@ -57,18 +57,18 @@ class MainActivity: XActivity(), IMainContract.IView {
     }
 
     override fun initEvent() {
-//        setClick(mRefreshBtn, Consumer {
-//            mPresenter.onRefreshMovies()
-//        })
+        setClick(mRefreshBtn, Consumer {
+            mPresenter.onRefreshMovies()
+        })
 
-//        mScrollView.setOnScrollChangeListener { view : NestedScrollView, scrollX: Int,
-//                                                scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
-//            if (scrollY >= (view.getChildAt(0).measuredHeight - mMoreHeight -
-//                    view.measuredHeight) && !isLoading) {
-//                isLoading = true
-//                mPresenter.onLoadMore()
-//            }
-//        }
+        mScrollView.setOnScrollChangeListener { view : NestedScrollView, scrollX: Int,
+                                                scrollY: Int, oldScrollX: Int, oldScrollY: Int ->
+            if (scrollY >= (view.getChildAt(0).measuredHeight - mMoreHeight -
+                    view.measuredHeight) && !isLoading) {
+                isLoading = true
+                mPresenter.onLoadMore()
+            }
+        }
 
     }
 
@@ -80,9 +80,8 @@ class MainActivity: XActivity(), IMainContract.IView {
     override fun setAdapter(bean: TheaterBean) {
         mAdapter = MoviesAdapter(bean.subjects,this)
         isLoading = false
-//        mMoreLayout.visibility = View.VISIBLE
+        mMoreLayout.visibility = View.VISIBLE
         mRecycler.adapter = mAdapter
-        mBannerView.setEntities(mPresenter.onGetBanner())
     }
 
     override fun addAdapter(bean: TheaterBean) {
