@@ -6,7 +6,6 @@ import com.eelly.core.base.XActivity
 import com.eelly.model.MovieBean
 import com.eelly.view.fragment.CommentFragment
 import com.eelly.view.fragment.DiscussFragment
-import kotlinx.android.synthetic.main.activity_details.*
 
 /**
  * @author Vurtne on 25-Nov-17.
@@ -15,7 +14,7 @@ class DetailsActivity : XActivity() {
 
     private val mLeftFragment : CommentFragment = CommentFragment()
     private val mRightFragment : DiscussFragment = DiscussFragment()
-    private var mMovie : MovieBean? = null
+    private var mMovie : MovieBean ? = null
 
     private lateinit var mAdapter : DetailsPagerAdapter
 
@@ -39,10 +38,12 @@ class DetailsActivity : XActivity() {
 //        Glide.with(context).load(mMovie!!.images.large).
 //                into(mBannerIv)
 
-        mAdapter = DetailsPagerAdapter(this,supportFragmentManager,mLeftFragment,mRightFragment)
-        mViewPager.adapter = mAdapter
+//        mAdapter = DetailsPagerAdapter(this,supportFragmentManager,mLeftFragment,mRightFragment)
+//        mViewPager.adapter = mAdapter
 
     }
+
+
 
 
 }

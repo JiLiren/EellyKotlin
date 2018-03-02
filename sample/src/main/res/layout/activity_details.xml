@@ -10,34 +10,34 @@
     tools:context=".view.activity.MainActivity">
 
 
-    <com.eelly.core.widget.PagerBanner
-        android:id="@+id/mPagerBanner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:TopOffset="48dp">
+    <!--<com.eelly.core.widget.PagerBanner-->
+        <!--android:id="@+id/mPagerBanner"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--app:TopOffset="48dp">-->
 
-        <ImageView
-            android:id="@+id/mBannerIv"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_480"/>
+        <!--<ImageView-->
+            <!--android:id="@+id/mBannerIv"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/dimen_480"/>-->
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/mTabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color_white"
-            app:tabIndicatorColor="@color/color_orange_700"
-            app:tabSelectedTextColor="@color/color_orange_700"
-            app:tabTextColor="@color/text_default" />
+        <!--<android.support.design.widget.TabLayout-->
+            <!--android:id="@+id/mTabLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/color_white"-->
+            <!--app:tabIndicatorColor="@color/color_orange_700"-->
+            <!--app:tabSelectedTextColor="@color/color_orange_700"-->
+            <!--app:tabTextColor="@color/text_default" />-->
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/mViewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" />
+        <!--<android.support.v4.view.ViewPager-->
+            <!--android:id="@+id/mViewPager"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="horizontal" />-->
 
-    </com.eelly.core.widget.PagerBanner>
+    <!--</com.eelly.core.widget.PagerBanner>-->
 
 
 
