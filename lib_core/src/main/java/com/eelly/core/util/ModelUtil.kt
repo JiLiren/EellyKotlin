@@ -12,60 +12,62 @@ import java.util.*
  * 判断手机是否是小米 或者魅族的工具类
  */
 class ModelUtil {
-    private val KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code"
-    private val KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name"
-    private val KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage"
 
+    companion object{
 
-    /** 是否是小米  */
-    fun isMIUI(): Boolean {
-        try {
-            val prop = BuildProperties.Companion.newInstance()
-            return (prop.getProperty(KEY_MIUI_VERSION_CODE, "") != null ||
-                    prop.getProperty(KEY_MIUI_VERSION_NAME, "") != null
-                    || prop.getProperty(KEY_MIUI_INTERNAL_STORAGE, "") != null)
-        } catch (e: IOException) {
-            return false
+        private val KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code"
+        private val KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name"
+        private val KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage"
+
+        /** 是否是小米  */
+        fun isMIUI(): Boolean {
+            try {
+                val prop = BuildProperties.Companion.newInstance()
+                return (prop.getProperty(KEY_MIUI_VERSION_CODE, "") != null ||
+                        prop.getProperty(KEY_MIUI_VERSION_NAME, "") != null
+                        || prop.getProperty(KEY_MIUI_INTERNAL_STORAGE, "") != null)
+            } catch (e: IOException) {
+                return false
+            }
+
+        }
+
+        fun isMIUI6(): Boolean {
+            try {
+                val prop = BuildProperties.Companion.newInstance()
+                val verStr = prop.getProperty(KEY_MIUI_VERSION_NAME, "")
+                val version = Integer.parseInt(verStr.substring(1, 2))
+                return version > 6 || version == 6
+            } catch (e: IOException) {
+                return false
+            }
+
+        }
+
+        fun isMIUI9(): Boolean {
+            try {
+                val prop = BuildProperties.Companion.newInstance()
+                val verStr = prop.getProperty(KEY_MIUI_VERSION_NAME, "")
+                val version = Integer.parseInt(verStr.substring(1, 2))
+                return version > 9 || version == 9
+            } catch (e: IOException) {
+                return false
+            }
+
+        }
+
+        /** 是否是魅族  */
+        fun isFlyme(): Boolean {
+            try {
+                val method = Build::class.java.getMethod("hasSmartBar")
+                return method != null
+            } catch (e: Exception) {
+                return false
+            }
+
         }
 
     }
-
-    fun isMIUI6(): Boolean {
-        try {
-            val prop = BuildProperties.Companion.newInstance()
-            val verStr = prop.getProperty(KEY_MIUI_VERSION_NAME, "")
-            val version = Integer.parseInt(verStr.substring(1, 2))
-            return version > 6 || version == 6
-        } catch (e: IOException) {
-            return false
-        }
-
-    }
-
-    fun isMIUI9(): Boolean {
-        try {
-            val prop = BuildProperties.Companion.newInstance()
-            val verStr = prop.getProperty(KEY_MIUI_VERSION_NAME, "")
-            val version = Integer.parseInt(verStr.substring(1, 2))
-            return version > 9 || version == 9
-        } catch (e: IOException) {
-            return false
-        }
-
-    }
-
-    /** 是否是魅族  */
-    fun isFlyme(): Boolean {
-        try {
-            val method = Build::class.java.getMethod("hasSmartBar")
-            return method != null
-        } catch (e: Exception) {
-            return false
-        }
-
-    }
-
-
 
     private class BuildProperties(){
 
