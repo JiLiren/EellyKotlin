@@ -14,12 +14,10 @@ import android.os.Parcelable
  * casts  整容
  * durations 时长
  * collect_count 播放次数
- * mainland_pubdate 大陆上映时间
  * has_video 是否有资源
  * original_title 电影原名
  * subtype：固定值 movie
  * directors：导演信息
- * pubdates：各地上映日期
  * year：上映年
  * images：剧照
  * alt：网页链接
@@ -28,9 +26,9 @@ import android.os.Parcelable
  */
 data class MovieBean(var rating: RateBean, var genres: List<String>, var title: String,
                      var casts: List<ActorBean>, var durations: List<String>, var collect_count: String,
-                     var mainland_pubdate: String, var has_video: Boolean, var original_title: String,
-                     var subtype: String, var directors: List<ActorBean>, var pubdates: List<String>,
-                     var year: String, var images: ImageBean, var alt: String, var id: String) : Parcelable {
+                     var has_video: Boolean, var original_title: String, var subtype: String,
+                     var directors: List<ActorBean>, var year: String, var images: ImageBean,
+                     var alt: String, var id: String) : Parcelable {
 
     constructor(source: Parcel) : this(
             source.readParcelable<RateBean>(RateBean::class.java.classLoader),
@@ -41,13 +39,11 @@ data class MovieBean(var rating: RateBean, var genres: List<String>, var title: 
             ArrayList<String>().apply { source.readStringList(this) },
             source.readString(),
 
-            source.readString(),
             1 == source.readInt(),
             source.readString(),
 
             source.readString(),
             ArrayList<ActorBean>().apply { source.readTypedList(this,ActorBean.CREATOR) },
-            ArrayList<String>().apply { source.readStringList(this) },
 
             source.readString(),
             source.readParcelable<ImageBean>(ImageBean::class.java.classLoader),
@@ -64,12 +60,10 @@ data class MovieBean(var rating: RateBean, var genres: List<String>, var title: 
         writeList(this@MovieBean.casts)
         writeList(this@MovieBean.durations)
         writeString(this@MovieBean.collect_count)
-        writeString(this@MovieBean.mainland_pubdate)
         writeInt(if(this@MovieBean.has_video) 1 else 0)
         writeString(this@MovieBean.original_title)
         writeString(this@MovieBean.subtype)
         writeList(this@MovieBean.directors)
-        writeStringList(this@MovieBean.pubdates)
         writeString(this@MovieBean.year)
         writeParcelable(this@MovieBean.images,flags)
         writeString(this@MovieBean.alt)
