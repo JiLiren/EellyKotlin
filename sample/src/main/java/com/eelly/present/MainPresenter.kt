@@ -29,6 +29,9 @@ class MainPresenter(val mView: IMainContract.IView, val mCompositeDisposable: Co
         mHolder = XNetty()
     }
 
+    /**
+     * @param
+     * */
     override fun refreshMovies() {
         mView.showLoading()
         mHolder.onRequest(mCompositeDisposable,mHolder.getRequest().onRequestMoviesList(),
